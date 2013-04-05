@@ -1,0 +1,1377 @@
+NAME: 'Angel of Serenity', COST: '[4][W][W][W]' TYPE: 'Creature', SUBTYPES: 'Angel'
+Flying<br />
+When Angel of Serenity enters the battlefield, you may exile up to three other target creatures from the battlefield and/or creature cards from graveyards.<br />
+When Angel of Serenity leaves the battlefield, return the exiled cards to their owners' hands.
+5/6
+
+
+NAME: 'Armory Guard', COST: '[3][W]' TYPE: 'Creature', SUBTYPES: 'Giant:Soldier'
+Armory Guard has vigilance as long as you control a Gate.
+2/5
+
+
+NAME: 'Arrest', COST: '[2][W]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant creature<br />
+Enchanted creature can't attack or block, and its activated abilities can't be activated.
+
+
+NAME: 'Avenging Arrow', COST: '[2][W]' TYPE: 'Instant', SUBTYPES: ''
+Destroy target creature that dealt damage this turn.
+
+
+NAME: 'Azorius Arrester', COST: '[1][W]' TYPE: 'Creature', SUBTYPES: 'Human:Soldier'
+When Azorius Arrester enters the battlefield, detain target creature an opponent controls.
+2/1
+
+
+NAME: 'Azorius Justiciar ', COST: '[2][W][W]' TYPE: 'Creature', SUBTYPES: 'Human:Wizard'
+When Azorius Justiciar enters the battlefield, detain up to two target creatures your opponents control. <i>(Until your next turn, those creatures can't attack or block and their activated abilities can't be activated.)</i>
+2/2
+
+
+NAME: 'Bazaar Krovod', COST: '[4][W]' TYPE: 'Creature', SUBTYPES: 'Beast'
+Whenever Bazaar Krovod attacks, another target attacking creature gets +0/+2 until end of turn. Untap that creature.
+2/5
+
+
+NAME: 'Concordia Pegasus', COST: '[1][W]' TYPE: 'Creature', SUBTYPES: 'Pegasus'
+Flying
+1/3
+
+
+NAME: 'Ethereal Armor', COST: '[W]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant creature<br />
+Enchanted creature gets +1/+1 for each enchantment you control and has first strike.
+
+
+NAME: 'Eyes in the Skies ', COST: '[3][W]' TYPE: 'Instant', SUBTYPES: ''
+Put a 1/1 white Bird creature token with flying onto the battlefield, then populate. <i>(Put a token onto the battlefield that's a copy of a creature token you control.)</i>
+
+
+NAME: 'Fencing Ace ', COST: '[1][W]' TYPE: 'Creature', SUBTYPES: 'Human:Soldier'
+Double Strike
+1/1
+
+
+NAME: 'Keening Apparition', COST: '[1][W]' TYPE: 'Creature', SUBTYPES: 'Spirit'
+Sacrifice Keening Apparition: Destroy target enchantment.
+2/2
+
+
+NAME: 'Knightly Valor', COST: '[4][W]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant creature<br />
+When Knightly Valor enters the battlefield, put a 2/2 white Knight creature token with vigilance onto the battlefield.<br />
+Enchanted creature gets +2/+2 and has vigilance.
+
+
+NAME: 'Martial Law ', COST: '[2][W][W]' TYPE: 'Enchantment', SUBTYPES: ''
+At the beginning of your upkeep, detain target creature an opponent controls. 
+
+
+NAME: 'Palisade Giant', COST: '[4][W][W]' TYPE: 'Creature', SUBTYPES: 'Giant:Soldier'
+All damage that would be dealt to you or another permanent you control is dealt to Palisade Giant instead.
+2/7
+
+
+NAME: 'Phantom General', COST: '[3][W]' TYPE: 'Creature', SUBTYPES: 'Spirit:Soldier'
+Creature tokens you control get +1/+1.
+2/3
+
+
+NAME: 'Precinct Captain ', COST: '[W][W]' TYPE: 'Creature', SUBTYPES: 'Human:Soldier'
+First strike<br />
+Whenever Precinct Captain deals combat damage to a player, put a 1/1 white Soldier creature token onto the battlefield.
+2/2
+
+
+NAME: 'Rest in Peace', COST: '[1][W]' TYPE: 'Enchantment', SUBTYPES: ''
+When Rest in Peace enters the battlefield, exile all cards from all graveyards.<br />
+If a card or token would be put into a graveyard from anywhere, exile it instead.
+
+
+NAME: 'Rootborn Defenses ', COST: '[2][W]' TYPE: 'Instant', SUBTYPES: ''
+Populate. Creatures you control are indestructible this turn.
+
+
+NAME: 'Security Blockade', COST: '[2][W]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant land<br />
+When Security Blockade enters the battlefield, put a 2/2 white Knight creature token with vigilance onto the battlefield.<br />
+Enchanted land has "[TAP]: Prevent the next 1 damage that would be dealt to you this turn."
+
+
+NAME: 'Selesnya Sentry', COST: '[2][W]' TYPE: 'Creature', SUBTYPES: 'Elephant:Soldier'
+[5][G]: Regenerate Selesnya Sentry.
+3/2
+
+
+NAME: 'Seller of Songbirds', COST: '[2][W]' TYPE: 'Creature', SUBTYPES: 'Human'
+When Seller of Songbirds enters the battlefield, put a 1/1 white Bird creature token with flying onto the battlefield.
+1/2
+
+
+NAME: 'Soul Tithe', COST: '[1][W]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant nonland permanent<br />
+At the beginning of the upkeep of enchanted permanent's controller, that player sacrifices it unless he or she pays [X], where X is its converted mana cost.
+
+
+NAME: 'Sphere of Safety', COST: '[4][W]' TYPE: 'Enchantment', SUBTYPES: ''
+Creatures can't attack you or a planeswalker you control unless their controller pays [X] for each of those creatures, where X is the number of enchantments you control.
+
+
+NAME: 'Sunspire Griffin', COST: '[1][W][W]' TYPE: 'Creature', SUBTYPES: 'Griffin'
+Flying
+2/3
+
+
+NAME: 'Swift Justice', COST: '[W]' TYPE: 'Instant', SUBTYPES: ''
+Until end of turn, target creature gets +1/+0 and gains first strike and lifelink.
+
+
+NAME: 'Trained Caracal', COST: '[W]' TYPE: 'Creature', SUBTYPES: 'Cat'
+Lifelink
+1/1
+
+
+NAME: 'Trostani's Judgment', COST: '[5][W]' TYPE: 'Instant', SUBTYPES: ''
+Exile target creature, then populate.
+
+
+NAME: 'Aquus Steed', COST: '[3][U]' TYPE: 'Creature', SUBTYPES: 'Beast'
+[2][U], [TAP]: Target creature gets -2/-0 until end of turn.
+1/3
+
+
+NAME: 'Blustersquall', COST: '[U]' TYPE: 'Instant', SUBTYPES: ''
+Tap target creature you don't control.<br />
+Overload [3][U] <i>(You may cast this spell for its overload cost. If you do, change its text by replacing all instances of "target" with 'each.")</i>
+
+
+NAME: 'Cancel', COST: '[1][U][U]' TYPE: 'Instant', SUBTYPES: ''
+Counter target spell.
+
+
+NAME: 'Chronic Flooding', COST: '[1][U]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant land<br />
+Whenever enchanted land becomes tapped, its controller puts the top three cards of his or her library into his or her graveyard.
+
+
+NAME: 'Conjured Currency', COST: '[5][U]' TYPE: 'Enchantment', SUBTYPES: ''
+At the beginning of your upkeep, you may exchange control of Conjured Currency and target permanent you neither own or control.
+
+
+NAME: 'Crosstown Courier', COST: '[1][U]' TYPE: 'Creature', SUBTYPES: 'Vedalken'
+Whenever Crosstown Courier deals combat damage to a player, that player puts that many cards from the top of his or her library into his or her graveyard.
+2/1
+
+
+NAME: 'Cyclonic Rift ', COST: '[1][U]' TYPE: 'Instant', SUBTYPES: ''
+Return target nonland permanent you don't control to its owner's hand.<br />
+Overload [6][U] <i>(You may cast this spell for its overload cost. If you do, change its text by replacing all instances of "target" with "each".)</i>
+
+
+NAME: 'Dispel', COST: '[U]' TYPE: 'Instant', SUBTYPES: ''
+Counter target instant spell.
+
+
+NAME: 'Doorkeeper', COST: '[1][U]' TYPE: 'Creature', SUBTYPES: 'Homunculus'
+Defender<br />
+[2][U], [TAP]: Target player puts the top X cards of his or her library into his or her graveyard, where X is the number of creatures with defender you control.
+0/4
+
+
+NAME: 'Downsize', COST: '[U]' TYPE: 'Instant', SUBTYPES: ''
+Target creature you don't control gets -4/-0 until end of turn.<br />
+Overload [2][U] <i>(You may cast this spell for its overload cost. If you do, change its text by replacing all instances of "target" with 'each.")</i>
+
+
+NAME: 'Faerie Impostor ', COST: '[U]' TYPE: 'Creature', SUBTYPES: 'Faerie:Rogue'
+Flying<br />
+When Faerie Impostor enters the battlefield, sacrifice it unless you return another creature you control to its owner's hand.
+2/1
+
+
+NAME: 'Hover Barrier', COST: '[2][U]' TYPE: 'Creature', SUBTYPES: 'Illusion:Wall'
+Defender, flying
+0/6
+
+
+NAME: 'Inaction Injunction', COST: '[1][U]' TYPE: 'Sorcery', SUBTYPES: ''
+Detain target creature an opponent controls. <i>(Until your next turn, that creature can't attack or block and its activated abilities can't be activated.)</i><br />
+Draw a card.
+
+
+NAME: 'Inspiration', COST: '[3][U]' TYPE: 'Instant', SUBTYPES: ''
+Target player draws two cards.
+
+
+NAME: 'Isperia's Skywatch', COST: '[5][U]' TYPE: 'Creature', SUBTYPES: 'Vedalken:Knight'
+Flying<br />
+When Isperia's Skywatch enters the battlefield, detain target creature an opponent controls. <i>(Until your next turn, that creature can't attack or block and its activated abilities can't be activated.)</i>
+3/3
+
+
+NAME: 'Jace, Architect of Thought ', COST: '[2][U][U]' TYPE: 'Planeswalker', SUBTYPES: 'Jace'
++1 : Until your next turn, whenever a creature an opponent controls attacks, it gets -1/-0 until end of turn.<br />
+-2 : Reveal the top three cards of your library. An opponent separates them into two piles. Put one pile into your hand and the other on the bottom of your library in any order.<br />
+-8 : For each player, search that player's library for a nonland card and exile it, then that player shuffles his or her library. You may cast those cards without paying their mana costs.
+
+
+NAME: 'Mizzium Skin', COST: '[U]' TYPE: 'Instant', SUBTYPES: ''
+Target creature you control gets +0/+1 and gains hexproof until end of turn.<br />
+Overload [1][U] <i>(You may cast this spell for its overload cost. If you do, change its text by replacing all instances of "target" with 'each.")</i>
+
+
+NAME: 'Paralyzing Grasp', COST: '[2][U]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant creature<br />
+Enchanted creature doesn't untap during its controller's untap step.
+
+
+NAME: 'Psychic Spiral ', COST: '[4][U]' TYPE: 'Instant', SUBTYPES: ''
+Shuffle all cards from your graveyard into your library. Target player puts that many cards from the top of his or her library into his or her graveyard.
+
+
+NAME: 'Runewing', COST: '[3][U]' TYPE: 'Creature', SUBTYPES: 'Bird'
+Flying<br />
+When Runewing dies, draw a card.
+2/2
+
+
+NAME: 'Search the City ', COST: '[4][U]' TYPE: 'Enchantment', SUBTYPES: ''
+When Search the City enters the battlefield, exile the top five cards of your library.<br />
+Whenever you play a card with the same name as one of the exiled cards, you may put one of those cards with that name into its owner's hand. Then if there are no cards exiled with Search the City, sacrifice it. If you do, take an extra turn after this one.
+
+
+NAME: 'Skyline Predator ', COST: '[4][U][U]' TYPE: 'Creature', SUBTYPES: 'Drake'
+Flash<br />
+Flying
+3/4
+
+
+NAME: 'Soulsworn Spirit', COST: '[3][U]' TYPE: 'Creature', SUBTYPES: 'Spirit'
+Soulsworn Spirit is unblockable.<br />
+When Soulsworn Spirit enters the battlefield, detain target creature an opponent controls. <i>(Until your next turn, that creature can't attack or block and its activated abilities can't be activated.)</i>
+2/1
+
+
+NAME: 'Sphinx of the Chimes ', COST: '[4][U][U]' TYPE: 'Creature', SUBTYPES: 'Sphinx'
+Flying<br />
+Discard two nonland cards with the same name: Draw four cards.
+5/6
+
+
+NAME: 'Stealer of Secrets ', COST: '[2][U]' TYPE: 'Creature', SUBTYPES: 'Human:Rogue'
+Whenever Stealer of Secrets deals combat damage to a player, draw a card.
+2/2
+
+
+NAME: 'Syncopate ', COST: '[X][U]' TYPE: 'Instant', SUBTYPES: ''
+Counter target spell unless its controller pays X.<br />
+If that spell is countered this way, exile it instead of putting it into its owner's graveyard.
+
+
+NAME: 'Tower Drake', COST: '[2][U]' TYPE: 'Creature', SUBTYPES: 'Drake'
+Flying<br />
+[W]: Tower Drake gets +0/+1 until end of turn.
+2/1
+
+
+NAME: 'Voidwielder', COST: '[4][U]' TYPE: 'Creature', SUBTYPES: 'Human:Wizard'
+When Voidwielder enters the battlefield, you may return target creature to its owner's hand.
+1/4
+
+
+NAME: 'Assassin's Strike', COST: '[4][B][B]' TYPE: 'Sorcery', SUBTYPES: ''
+Destroy target creature. Its controller discards a card.
+
+
+NAME: 'Catacomb Slug', COST: '[4][B]' TYPE: 'Creature', SUBTYPES: 'Slug'
+
+2/6
+
+
+NAME: 'Cremate', COST: '[B]' TYPE: 'Instant', SUBTYPES: ''
+Exile target card from a graveyard.<br />
+Draw a card.
+
+
+NAME: 'Daggerdrome Imp', COST: '[1][B]' TYPE: 'Creature', SUBTYPES: 'Imp'
+Flying<br />
+Lifelink <i>(Damage dealt by this creature also causes you to gain that much life.)</i>
+1/1
+
+
+NAME: 'Dark Revenant', COST: '[3][B]' TYPE: 'Creature', SUBTYPES: 'Spirit'
+Flying<br />
+When Dark Revenant dies, put it on top of its owner's library.
+2/2
+
+
+NAME: 'Dead Reveler ', COST: '[2][B]' TYPE: 'Creature', SUBTYPES: 'Zombie'
+Unleash <i>(You may have this creature enter the battlefield with a +1/+1 counter on it. It can't block as long as it has a +1/+1 counter on it.)</i>
+2/3
+
+
+NAME: 'Desecration Demon ', COST: '[2][B][B]' TYPE: 'Creature', SUBTYPES: 'Demon'
+Flying<br />
+At the beginning of each combat, any opponent may sacrifice a creature. If a player does, tap Desecration Demon and put a +1/+1 counter on it.
+6/6
+
+
+NAME: 'Destroy the Evidence', COST: '[4][B]' TYPE: 'Sorcery', SUBTYPES: ''
+Destroy target land. Its controller reveals cards from the top of his or her library until he or she reveals a land card, then puts those cards into his or her graveyard.
+
+
+NAME: 'Deviant Glee', COST: '[B]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant creature<br />
+Enchanted creature gets +2/+1 and has "[R]: This creature gains trample until end of turn."
+
+
+NAME: 'Drainpipe Vermin', COST: '[B]' TYPE: 'Creature', SUBTYPES: 'Rat'
+When Drainpipe Vermin dies, you may pay [B]. If you do, target player discards a card.
+1/1
+
+
+NAME: 'Grave Betrayal', COST: '[5][B][B]' TYPE: 'Enchantment', SUBTYPES: ''
+Whenever a creature you don't control dies, return it to the battlefield under your control with an additional +1/+1 counter on it at the beginning of the next end step. That creature is a black Zombie in addition to its other colors and types.
+
+
+NAME: 'Launch Party', COST: '[3][B]' TYPE: 'Instant', SUBTYPES: ''
+As an additional cost to cast Launch Party, sacrifice a creature.<br />
+Destroy target creature. Its controller loses 2 life.
+
+
+NAME: 'Grim Roustabout ', COST: '[1][B]' TYPE: 'Creature', SUBTYPES: 'Skeleton:Warrior'
+Unleash <i>(You may have this creature enter the battlefield with a +1/+1 counter on it. It can't block as long as it has a +1/+1 counter on it.)</i><br />
+[1][B]: Regenerate Grim Roustabout
+1/1
+
+
+NAME: 'Mind Rot', COST: '[2][B]' TYPE: 'Sorcery', SUBTYPES: ''
+Target player discards two cards.
+
+
+NAME: 'Necropolis Regent ', COST: '[3][B][B][B]' TYPE: 'Creature', SUBTYPES: 'Vampire'
+Flying<br />
+Whenever a creature you control deals combat damage to a player, put that many +1/+1 counters on it.
+6/5
+
+
+NAME: 'Ogre Jailbreaker ', COST: '[3][B]' TYPE: 'Creature', SUBTYPES: 'Ogre:Rogue'
+Defender<br />
+Ogre Jailbreaker can attack as though it didn't have defender as long as you control a Gate.
+4/4
+
+
+NAME: 'Pack Rat ', COST: '[1][B]' TYPE: 'Creature', SUBTYPES: 'Rat'
+Pack Rat's power and toughness are each equal to the number of Rats you control.<br />
+[2][B], Discard a card: Put a token onto the battlefield that's a copy of Pack Rat.
+*/*
+
+
+NAME: 'Perilous Shadow', COST: '[2][B][B]' TYPE: 'Creature', SUBTYPES: 'Insect:Shade'
+[1][B]: Perilous Shadow gets +2/+2 until end of turn.
+0/4
+
+
+NAME: 'Sewer Shambler', COST: '[2][B]' TYPE: 'Creature', SUBTYPES: 'Zombie'
+Swampwalk <i>(This creature is unblockable as long as defending player controls a Swamp.)</i><br />
+Scavenge [2][B] <i>([2][B], Exile this card from your graveyard: Put a number of +1/+1 counters equal to this card's power on target creature. Scavenge only as a sorcery.)</i>
+2/1
+
+
+NAME: 'Shrieking Affliction', COST: '[B]' TYPE: 'Enchantment', SUBTYPES: ''
+At the beginning of each opponent's upkeep, if that player has one or fewer cards in hand, he or she loses 3 life.
+
+
+NAME: 'Slum Reaper', COST: '[3][B]' TYPE: 'Creature', SUBTYPES: 'Horror'
+When Slum Reaper enters the battlefield, each player sacrifices a creature.
+4/2
+
+
+NAME: 'Stab Wound', COST: '[2][B]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant creature<br />
+Enchanted creature gets -2/-2.<br />
+At the beginning of the upkeep of enchantment creature's controller, that player loses 2 life.
+
+
+NAME: 'Tavern Swindler', COST: '[1][B]' TYPE: 'Creature', SUBTYPES: 'Human:Rogue'
+[TAP], Pay 3 life: Flip a coin. If you win the flip, you gain 6 life.
+2/2
+
+
+NAME: 'Terrus Wurm', COST: '[6][B]' TYPE: 'Creature', SUBTYPES: 'Zombie:Wurm'
+Scavenge [6][B] <i>([6][B], Exile this card from your graveyard: Put a number of +1/+1 counters equal to this card's power on target creature. Scavenge only as a sorcery.)</i>
+5/5
+
+
+NAME: 'Thrill-Kill Assassin', COST: '[1][B]' TYPE: 'Creature', SUBTYPES: 'Human:Assassin'
+Deathtouch<br />
+Unleash <i>(You may have this creature enter the battlefield with a +1/+1 counter on it. It can't block as long as it has a +1/+1 counter on it.)</i>
+1/2
+
+
+NAME: 'Ultimate Price ', COST: '[1][B]' TYPE: 'Instant', SUBTYPES: ''
+Destroy target monocolored creature.
+
+
+NAME: 'Underworld Connections ', COST: '[1][B][B]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant Land<br />
+Enchanted Land has "[TAP], Pay 1 life: Draw a card"
+
+
+NAME: 'Zanikev Locust', COST: '[5][B]' TYPE: 'Creature', SUBTYPES: 'Insect'
+Flying<br />
+Scavenge [2][B][B] <i>([2][B][B], Exile this card from your graveyard: Put a number of +1/+1 counters equal to this card's power on target creature. Scavenge only as a sorcery.)</i>
+3/3
+
+
+NAME: 'Annihilating Fire', COST: '[1][R][R]' TYPE: 'Instant', SUBTYPES: ''
+Annihilating Fire deals 3 damage to target creature or player. If a creature dealt damage this way would die this turn, exile it instead.
+
+
+NAME: 'Ash Zealot ', COST: '[R][R]' TYPE: 'Creature', SUBTYPES: 'Human:Warrior'
+First strike, haste<br />
+Whenever a player casts a spell from a graveyard, Ash Zealot deals 3 damage to that player.
+2/2
+
+
+NAME: 'Batterhorn', COST: '[4][R]' TYPE: 'Creature', SUBTYPES: 'Beast'
+When Batterhorn enters the battlefield, you may destroy target artifact.
+4/3
+
+
+NAME: 'Bellows Lizard', COST: '[R]' TYPE: 'Creature', SUBTYPES: 'Lizard'
+[1][R]: Bellows Lizard gets +1/+0 until end of turn.
+1/1
+
+
+NAME: 'Bloodfray Giant', COST: '[2][R][R]' TYPE: 'Creature', SUBTYPES: 'Giant'
+Trample<br />
+Unleash
+4/3
+
+
+NAME: 'Chaos Imps', COST: '[4][R][R]' TYPE: 'Creature', SUBTYPES: 'Imp'
+Flying<br />
+Unleash <i>(You may have this creature enter the battlefield with a +1/+1 counter on it. It can't block as long as it has a +1/+1 counter on it.)</i><br />
+Chaos Imps has trample as long as it has a +1/+1 counter on it.
+6/5
+
+
+NAME: 'Cobblebrute', COST: '[3][R]' TYPE: 'Creature', SUBTYPES: 'Elemental'
+
+5/2
+
+
+NAME: 'Dynacharge', COST: '[R]' TYPE: 'Instant', SUBTYPES: ''
+Target creature you control gets +2/+0 until end of turn.<br />
+Overload [2][R]
+
+
+NAME: 'Electrickery', COST: '[R]' TYPE: 'Instant', SUBTYPES: ''
+Electrickery deals 1 damage to target creature you don't control.<br />
+Overload [1][R]
+
+
+NAME: 'Explosive Impact', COST: '[5][R]' TYPE: 'Instant', SUBTYPES: ''
+Explosive Impact deals 5 damage to target creature or player.
+
+
+NAME: 'Goblin Rally', COST: '[3][R][R]' TYPE: 'Sorcery', SUBTYPES: ''
+Put four 1/1 red Goblin creature tokens onto the battlefield.
+
+
+NAME: 'Gore-House Chainwalker', COST: '[1][R]' TYPE: 'Creature', SUBTYPES: 'Human:Warrior'
+Unleash
+2/1
+
+
+NAME: 'Guild Feud ', COST: '[5][R]' TYPE: 'Enchantment', SUBTYPES: ''
+At the beginning of your upkeep, target opponent reveals the top three cards of his or her library, may put a creature card from among them onto the battlefield, then puts the rest into his or her graveyard. You do the same, with the top three cards of your library. If two creatures are put onto the battlefield this way, those creatures fight each other.
+
+
+NAME: 'Guttersnipe ', COST: '[2][R]' TYPE: 'Creature', SUBTYPES: 'Goblin:Shaman'
+Whenever you cast an instant or sorcery spell, Guttersnipe deals 2 damage to each opponent.
+2/2
+
+
+NAME: 'Lobber Crew', COST: '[2][R]' TYPE: 'Creature', SUBTYPES: 'Goblin:Warrior'
+Defender<br />
+[TAP]: Lobber Crew deals 1 damage to each opponent.<br />
+Whenever you cast a multicolored spell, untap Lobber Crew.
+0/4
+
+
+NAME: 'Minotaur Aggressor', COST: '[6][R]' TYPE: 'Creature', SUBTYPES: 'Minotaur:Berserker'
+First strike, haste
+6/2
+
+
+NAME: 'Mizzium Mortars ', COST: '[1][R]' TYPE: 'Sorcery', SUBTYPES: ''
+Mizzium Mortars deals 4 damage to target creature you don't control.<br />
+Overload [3][R][R][R] <i>(You may cast this spell for its overload cost. If you do, change its text by replacing all instances of "target" with "each".)</i>
+
+
+NAME: 'Pursuit of Flight', COST: '[1][R]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant creature<br />
+Enchanted creature gets +2/+2 and has "[U]: This creature gains flying until end of turn."
+
+
+NAME: 'Pyroconvergence ', COST: '[4][R]' TYPE: 'Enchantment', SUBTYPES: ''
+Whenever you cast a multicolored spell, Pyroconvergence deals 2 damage to target creature or player.
+
+
+NAME: 'Racecourse Fury', COST: '[R]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant land<br />
+Enchanted land has "[TAP]: Target creature gains haste until end of turn."
+
+
+NAME: 'Splatter Thug', COST: '[2][R]' TYPE: 'Creature', SUBTYPES: 'Human:Warrior'
+First strike<br />
+Unleash
+2/2
+
+
+NAME: 'Street Spasm ', COST: '[X][R]' TYPE: 'Instant', SUBTYPES: ''
+Street Spasm deals X damage to target creature without flying you don't control.<br />
+Overload [X][X][R][R] <i>(You may cast this spell for its overload cost. If you do, change its text by replacing all instances of "target" with "each".)</i>
+
+
+NAME: 'Survey the Wreckage', COST: '[4][R]' TYPE: 'Sorcery', SUBTYPES: ''
+Destroy target land. Put a 1/1 red Goblin creature token onto the battlefield.
+
+
+NAME: 'Tenement Crasher', COST: '[5][R]' TYPE: 'Creature', SUBTYPES: 'Beast'
+Haste
+5/4
+
+
+NAME: 'Traitorous Instinct', COST: '[3][R]' TYPE: 'Sorcery', SUBTYPES: ''
+Gain control of target creature until end of turn. Untap that creature. Until end of turn, it gets +2/+0 and gains haste.
+
+
+NAME: 'Utvara Hellkite', COST: '[6][R][R]' TYPE: 'Creature', SUBTYPES: 'Dragon'
+Flying<br />
+Whenever a Dragon you control attacks, put a 6/6 red Dragon creature token with flying onto the battlefield.
+6/6
+
+
+NAME: 'Vandalblast', COST: '[R]' TYPE: 'Sorcery', SUBTYPES: ''
+Destroy target artifact you don't control.<br />
+Overload [4][R]
+
+
+NAME: 'Viashino Racketeer', COST: '[2][R]' TYPE: 'Creature', SUBTYPES: 'Viashino:Rogue'
+When Viashino Racketeer enters the battlefield, you may discard a card. If you do, draw a card.
+2/1
+
+
+NAME: 'Aerial Predation', COST: '[2][G]' TYPE: 'Instant', SUBTYPES: ''
+Destroy target creature with flying. You gain 2 life
+
+
+NAME: 'Archweaver', COST: '[5][G][G]' TYPE: 'Creature', SUBTYPES: 'Spider'
+Reach, trample
+5/5
+
+
+NAME: 'Axebane Guardian ', COST: '[2][G]' TYPE: 'Creature', SUBTYPES: 'Human:Druid'
+Defender<br />
+[TAP]: Add X mana in any combination of colors to your mana pool, where X is the number of creatures with defender you control.
+0/3
+
+
+NAME: 'Axebane Stag', COST: '[6][G]' TYPE: 'Creature', SUBTYPES: 'Elk'
+
+6/7
+
+
+NAME: 'Brushstrider', COST: '[1][G]' TYPE: 'Creature', SUBTYPES: 'Beast'
+Vigilance
+3/1
+
+
+NAME: 'Centaur's Herald', COST: '[G]' TYPE: 'Creature', SUBTYPES: 'Elf:Scout'
+[2][G], Sacrifice Centaur's Herald: Put a 3/3 green Centaur creature token onto the battlefield.
+0/1
+
+
+NAME: 'Chorus of Might', COST: '[3][G]' TYPE: 'Instant', SUBTYPES: ''
+Until end of turn, target creature gets +1/+1 for each creature you control and gains trample.
+
+
+NAME: 'Deadbridge Goliath ', COST: '[2][G][G]' TYPE: 'Creature', SUBTYPES: 'Insect'
+Scavenge [4][G][G] <i>([4][G][G], Exile this card from your graveyard: Put a number of +1/+1 counter's equal to this card's power on target creature. Scavenge only as a sorcery.)</i>
+5/5
+
+
+NAME: 'Death's Presence ', COST: '[5][G]' TYPE: 'Enchantment', SUBTYPES: ''
+Whenever a creature you control dies, put X +1/+1 counters on target creature you control, where X is the power of the creature that died.
+
+
+NAME: 'Drudge Beetle', COST: '[1][G]' TYPE: 'Creature', SUBTYPES: 'Insect'
+Scavenge [5][G]
+2/2
+
+
+NAME: 'Druid's Deliverance', COST: '[1][G]' TYPE: 'Instant', SUBTYPES: ''
+Prevent all combat damage that would be dealt to you this turn. Populate.
+
+
+NAME: 'Gatecreeper Vine ', COST: '[1][G]' TYPE: 'Creature', SUBTYPES: 'Plant'
+Defender<br />
+When Gatecreeper Vine enters the battlefield, you may search your library for a basic land card or a Gate card, reveal it, put it into your hand, then shuffle your library. 
+0/2
+
+
+NAME: 'Giant Growth', COST: '[G]' TYPE: 'Instant', SUBTYPES: ''
+Target creature gets +3/+3 until end of turn.
+
+
+NAME: 'Gobbling Ooze', COST: '[4][G]' TYPE: 'Creature', SUBTYPES: 'Ooze'
+[G], Sacrifice another creature: Put a +1/+1 counter on Gobbling Ooze.
+3/3
+
+
+NAME: 'Golgari Decoy', COST: '[3][G]' TYPE: 'Creature', SUBTYPES: 'Elf:Rogue'
+All creatures able to block Golgari Decoy do so.<br />
+<br />
+Scavenge [3][G][G] <i>([3][G][G], Exile this card from your graveyard: Put a number of +1/+1 counter's equal to this card's power on target creature. Scavenge only as a sorcery.)</i>
+2/2
+
+
+NAME: 'Horncaller's Chant', COST: '[7][G]' TYPE: 'Sorcery', SUBTYPES: ''
+Put a 4/4 green Rhino creature token with trample onto the battlefield, then populate.
+
+
+NAME: 'Korozda Monitor ', COST: '[2][G][G]' TYPE: 'Creature', SUBTYPES: 'Lizard'
+Trample<br />
+Scavenge [5][G][G]
+3/3
+
+
+NAME: 'Mana Bloom', COST: '[X][G]' TYPE: 'Enchantment', SUBTYPES: ''
+Mana Bloom enters the battlefield with X charge counters on it.<br />
+Remove a charge counter from Mana Bloom: Add one mana of any color to your mana pool. Activate this ability only once each turn.<br />
+At the beginning of your upkeep, if Mana Bloom has no charge counters on it, return it to its owner's hand.
+
+
+NAME: 'Oak Street Innkeeper', COST: '[2][G]' TYPE: 'Creature', SUBTYPES: 'Elf'
+As long as it's not your turn, tapped creatures you control have hexproof.
+1/2
+
+
+NAME: 'Rubbleback Rhino', COST: '[4][G]' TYPE: 'Creature', SUBTYPES: 'Rhino'
+Hexproof
+3/4
+
+
+NAME: 'Savage Surge', COST: '[1][G]' TYPE: 'Instant', SUBTYPES: ''
+Target creature gets +2/+2 until end of turn. Untap that creature.
+
+
+NAME: 'Seek the Horizon', COST: '[3][G]' TYPE: 'Sorcery', SUBTYPES: ''
+Search your library for up to three basic land cards, reveal them, and put them into your hand. Then shuffle your library.
+
+
+NAME: 'Slime Molding ', COST: '[X][G]' TYPE: 'Sorcery', SUBTYPES: ''
+Put an X/X green Ooze creature token onto the battlefield.
+
+
+NAME: 'Stonefare Crocodile', COST: '[2][G]' TYPE: 'Creature', SUBTYPES: 'Crocodile'
+[2][B]: Stonefare Crocodile gains lifelink until end of turn.
+3/2
+
+
+NAME: 'Towering Indrik', COST: '[3][G]' TYPE: 'Creature', SUBTYPES: 'Beast'
+Reach
+2/4
+
+
+NAME: 'Urban Burgeoning', COST: '[G]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant land<br />
+Enchanted land has "Untap this land during each other player's untap step."
+
+
+NAME: 'Wild Beastmaster ', COST: '[2][G]' TYPE: 'Creature', SUBTYPES: 'Human:Shaman'
+Whenever Wild Beastmaster attacks, each other creature you control gets +X/+X until end of turn, where X is Wild Beastmaster's power
+1/1
+
+
+NAME: 'Worldspine Wurm ', COST: '[8][G][G][G]' TYPE: 'Creature', SUBTYPES: 'Wurm'
+Trample<br />
+When Worldspine Wurm dies, put three 5/5 green Wurm creature tokens with trample onto the battlefield.<br />
+When Worldspine Wurm is put into a graveyard from anywhere, shuffle it into its owner's library.
+15/15
+
+
+NAME: 'Abrupt Decay ', COST: '[B][G]' TYPE: 'Instant', SUBTYPES: ''
+Abrupt Decay can't be countered by spells or abilities.<br />
+<br />
+Destroy target nonland permanent with converted mana cost 3 or less.
+
+
+NAME: 'Archon of the Triumvirate ', COST: '[5][W][U]' TYPE: 'Creature', SUBTYPES: 'Archon'
+Flying<br />
+Whenever Archon of the Triumvirate attacks, detain up to two target nonland permanents your opponents control. <i>(Until your next turn, those permanents can't attack or block and their activated abilities can't be activated.)</i>
+4/5
+
+
+NAME: 'Armada Wurm', COST: '[2][G][G][W][W]' TYPE: 'Creature', SUBTYPES: 'Wurm'
+Trample<br />
+When Armada Wurm enters the battlefield put a 5/5 Wurm creature token with trample onto the battlefield.
+5/5
+
+
+NAME: 'Auger Spree ', COST: '[1][B][R]' TYPE: 'Instant', SUBTYPES: ''
+Target creature gets +4/-4 until end of turn.
+
+
+NAME: 'Azorius Charm ', COST: '[W][U]' TYPE: 'Instant', SUBTYPES: ''
+Choose one - Creatures you control gain lifelink until end of turn; or draw a card; or put target attacking or blocking creature on top of its owner's library.
+
+
+NAME: 'Call of the Conclave ', COST: '[G][W]' TYPE: 'Sorcery', SUBTYPES: ''
+Put a 3/3 green Centaur creature token onto the battlefield.
+
+
+NAME: 'Carnival Hellsteed ', COST: '[4][B][R]' TYPE: 'Creature', SUBTYPES: 'Nightmare:Horse'
+First Strike, haste<br />
+Unleash <i>(You may have this creature enter the battlefield with a +1/+1 counter on it. It can't block as long as it has a +1/+1 counter on it.)</i><br />
+
+5/4
+
+
+NAME: 'Centaur Healer', COST: '[1][G][W]' TYPE: 'Creature', SUBTYPES: 'Centaur:Cleric'
+When Centaur Healer enters the battlefield, you gain 3 life.
+3/3
+
+
+NAME: 'Chemister's Trick', COST: '[U][R]' TYPE: 'Instant', SUBTYPES: ''
+Target creature you don't control gets -2/-0 until end of turn and attacks this turn if able.<br />
+Overload [3][U][R] <i>(You may cast this spell for its overload cost. If you do, change its text by replacing all instances of "target" with 'each.")</i>
+
+
+NAME: 'Collective Blessing ', COST: '[3][G][G][W]' TYPE: 'Enchantment', SUBTYPES: ''
+Creatures you control get +3/+3.
+
+
+NAME: 'Common Bond', COST: '[1][G][W]' TYPE: 'Instant', SUBTYPES: ''
+Put a +1/+1 counter on target creature.<br />
+Put a +1/+1 counter on target creature.
+
+
+NAME: 'Corpsejack Menace ', COST: '[2][B][G]' TYPE: 'Creature', SUBTYPES: 'Fungus'
+If one or more +1/+1 counters would be placed on a creature you control, twice that many +1/+1 counters are placed instead.
+4/4
+
+
+NAME: 'Counterflux ', COST: '[U][U][R]' TYPE: 'Instant', SUBTYPES: ''
+Counterflux can't be countered by spells or abilities.<br />
+Counter target spell you don't control.<br />
+Overload [1][U][U][R]
+
+
+NAME: 'Coursers' Accord', COST: '[4][G][W]' TYPE: 'Sorcery', SUBTYPES: ''
+Put a 3/3 green Centaur creature token onto the battlefield, then populate. <i>(Put a token onto the battlefield that's a copy of a creature token you control.)</i>
+
+
+NAME: 'Detention Sphere ', COST: '[1][W][U]' TYPE: 'Enchantment', SUBTYPES: ''
+When Detention Sphere enters the battlefield, you may exile target nonland permanent not named Detention Sphere and all other permanents with the same name as that permanent.<br />
+When Detention Sphere leaves the battlefield, return the exiled cards to the battlefield under their owner's control. 
+
+
+NAME: 'Dramatic Rescue', COST: '[W][U]' TYPE: 'Instant', SUBTYPES: ''
+Return target creature to its owner's hand. You gain 2 life.
+
+
+NAME: 'Dreadbore ', COST: '[B][R]' TYPE: 'Sorcery', SUBTYPES: ''
+Destroy target creature or planeswalker.
+
+
+NAME: 'Dreg Mangler ', COST: '[1][B][G]' TYPE: 'Creature', SUBTYPES: 'Plant:Zombie'
+Haste<br />
+Scavenge [3][B][G] <i>([3][B][G], Exile this card from your graveyard: Put a number of +1/+1 counter's equal to this card's power on target creature. Scavenge only as a sorcery.)</i>
+3/3
+
+
+NAME: 'Epic Experiment ', COST: '[X][U][R]' TYPE: 'Sorcery', SUBTYPES: ''
+Exile the top X cards of your library. For each instant or sorcery with converted mana cost X or less among them, you may cast that card without paying its mana cost. Then put all cards exiled this way that weren't cast into your graveyard.
+
+
+NAME: 'Essence Backlash', COST: '[2][U][R]' TYPE: 'Instant', SUBTYPES: ''
+Counter target creature spell. Essence Backlash deals damage equal to that spell's power to its controller.
+
+
+NAME: 'Fall of the Gavel', COST: '[3][W][U]' TYPE: 'Instant', SUBTYPES: ''
+Counter target spell. You gain 5 life.
+
+
+NAME: 'Firemind's Foresight ', COST: '[5][U][R]' TYPE: 'Instant', SUBTYPES: ''
+Search your library for an instant card with converted mana cost 3, reveal it, and put it into your hand. Then repeat this process for instant cards with converted mana costs 1 and 2. Then shuffle your library.
+
+
+NAME: 'Goblin Electromancer ', COST: '[U][R]' TYPE: 'Creature', SUBTYPES: 'Goblin:Wizard'
+Instant and sorcery spells you cast cost [1] less to cast.
+2/2
+
+
+NAME: 'Golgari Charm', COST: '[B][G]' TYPE: 'Instant', SUBTYPES: ''
+Choose one - All creatures get -1/-1 until end of turn; or destroy target enchantment; or regenerate each creature you control.
+
+
+NAME: 'Grisly Salvage ', COST: '[B][G]' TYPE: 'Instant', SUBTYPES: ''
+Reveal the top five cards of your library. You may put a creature or land card from among them into your hand. Put the rest into your graveyard.
+
+
+NAME: 'Havoc Festival ', COST: '[4][B][R]' TYPE: 'Enchantment', SUBTYPES: ''
+Players can't gain life.<br />
+<br />
+At the beginning of each player's upkeep, that player loses half his or her life, rounded up.
+
+
+NAME: 'Hellhole Flailer', COST: '[1][B][R]' TYPE: 'Creature', SUBTYPES: 'Ogre:Warrior'
+Unleash <i>(You may have this creature enter the battlefield with a +1/+1 counter on it. It can't block as long as it has a +1/+1 counter on it.)</i><br />
+[2][B][R], Sacrifice Hellhole Flailer: Hellhole Flailer deals damage equal to its power to target player.
+3/2
+
+
+NAME: 'Heroes' Reunion ', COST: '[G][W]' TYPE: 'Instant', SUBTYPES: ''
+Target player gains 7 life.
+
+
+NAME: 'Hussar Patrol', COST: '[2][W][U]' TYPE: 'Creature', SUBTYPES: 'Human:Knight'
+Flash <i>(You may cast this spell any time you could cast an instant.)</i><br />
+Vigilance
+2/4
+
+
+NAME: 'Hypersonic Dragon ', COST: '[3][U][R]' TYPE: 'Creature', SUBTYPES: 'Dragon'
+Flying, haste<br />
+You may cast sorcery spells as though they had flash.
+4/4
+
+
+NAME: 'Isperia, Supreme Judge ', COST: '[2][W][W][U][U]' TYPE: 'Legendary:Creature', SUBTYPES: 'Sphinx'
+Flying<br />
+Whenever a creature attacks you or a planeswalker you control, you may draw a card.
+6/4
+
+
+NAME: 'Izzet Charm ', COST: '[U][R]' TYPE: 'Instant', SUBTYPES: ''
+Choose One - Counter target noncreature spell unless its controller pays [2]; or Izzet Charm deals 2 damage to target creature; or draw two cards, then discard two cards.
+
+
+NAME: 'Izzet Staticaster', COST: '[1][U][R]' TYPE: 'Creature', SUBTYPES: 'Human:Wizard'
+Flash <i>(You may cast this spell any time you could play an instant.)</i><br />
+Haste<br />
+[TAP]: Izzet Staticaster deals 1 damage to target creature and each other creature with the same name as that creature.
+0/3
+
+
+NAME: 'Jarad, Golgari Lich Lord ', COST: '[B][B][G][G]' TYPE: 'Legendary:Creature', SUBTYPES: 'Zombie:Elf'
+Jarad, Golgari Lich Lord gets +1/+1 for each creature card in your graveyard.<br />
+[1][B][G], Sacrifice another creature: Each opponent loses life equal to the sacrificed creature's power.<br />
+Sacrifice a Swamp and a Forest: Return Jarad from your graveyard to your hand.
+2/2
+
+
+NAME: 'Jarad's Orders ', COST: '[2][B][G]' TYPE: 'Sorcery', SUBTYPES: ''
+Search your library for up to two creature cards and reveal them. Put one into your hand and the other into your graveyard. Then shuffle your library.
+
+
+NAME: 'Korozda Guildmage ', COST: '[B][G]' TYPE: 'Creature', SUBTYPES: 'Elf:Shaman'
+[1][B][G]: Target creature gets +1/+1 and gains intimidate until end of turn.<br />
+[2][B][G], Sacrifice a nontoken creature: Put X 1/1 green Saproling creature tokens onto the battlefield, where X is the sacrificed creature's toughness.
+2/2
+
+
+NAME: 'Lotleth Troll ', COST: '[B][G]' TYPE: 'Creature', SUBTYPES: 'Zombie:Troll'
+Trample<br />
+Discard a creature card: Put a +1/+1 counter on Lotleth Troll.<br />
+[B]: Regenerate Lotleth Troll. 
+2/1
+
+
+NAME: 'Loxodon Smiter ', COST: '[1][G][W]' TYPE: 'Creature', SUBTYPES: 'Elephant:Soldier'
+Loxodon Smiter can't be countered.<br />
+If a spell or ability an opponent controls causes you to discard Loxodon Smiter, put it onto the battlefield instead of putting it into your graveyard.
+4/4
+
+
+NAME: 'Lyev Skyknight ', COST: '[1][W][U]' TYPE: 'Creature', SUBTYPES: 'Human:Knight'
+Flying<br />
+When Lyev Skyknight enters the battlefield, detain target nonland permanent an opponent controls. <i>(Until your next turn, that permanent can't attack or block and its activated abilities can't be activated.)</i>
+3/1
+
+
+NAME: 'Mercurial Chemister', COST: '[3][U][R]' TYPE: 'Creature', SUBTYPES: 'Human:Wizard'
+[U],[TAP]: Draw two cards.<br />
+[R],[TAP], Discard a card: Mercurial Chemister deals damage to target creature equal to the discarded card's converted mana cost.
+2/3
+
+
+NAME: 'New Prahv Guildmage', COST: '[U][W]' TYPE: 'Creature', SUBTYPES: 'Human:Wizard'
+[W][U]: Target creature gains flying until end of turn.<br />
+[3][W][U]: Detain target nonland permanent an opponent controls. <i>(Until your next turn, that permanent can't attack or block and its activated abilities can't be activated.)</i>
+2/2
+
+
+NAME: 'Nivix Guildmage ', COST: '[U][R]' TYPE: 'Creature', SUBTYPES: 'Human:Wizard'
+[1][U][R]: Draw a card, then discard a card.<br />
+[2][U][R]: Copy target instant or sorcery spell you control. You may choose new targets for the copy.
+2/2
+
+
+NAME: 'Niv-Mizzet, Dracogenius ', COST: '[2][U][U][R][R]' TYPE: 'Legendary:Creature', SUBTYPES: 'Dragon'
+Flying<br />
+Whenever Niv-Mizzet, Dracogenius deals damage to a player, you may draw a card.<br />
+[U][R]: Niv-Mizzet deals 1 damage to target creature or player.
+5/5
+
+
+NAME: 'Rakdos Charm ', COST: '[B][R]' TYPE: 'Instant', SUBTYPES: ''
+Choose one: exile all cards from target player's graveyard; or destroy target artifact; or each creature deals 1 damage to its controller.
+
+
+NAME: 'Rakdos Ragemutt', COST: '[3][B][R]' TYPE: 'Creature', SUBTYPES: 'Elemental:Hound'
+Lifelink, haste
+3/3
+
+
+NAME: 'Rakdos Ringleader', COST: '[4][B][R]' TYPE: 'Creature', SUBTYPES: 'Skeleton:Warrior'
+First strike<br />
+Whenever Rakdos Ringleader deals combat damage to a player, that player discards a card at random.<br />
+[B]: Regenerate Rakdos Ringleader.<br />
+
+3/1
+
+
+NAME: 'Rakdos, Lord of Riots ', COST: '[B][B][R][R]' TYPE: 'Legendary:Creature', SUBTYPES: 'Demon'
+You can't cast Rakdos, Lord of Riots unless an opponent lost life this turn.<br />
+Flying, trample<br />
+Creature spells you cast cost [1] less to cast for each 1 life your opponents have lost this turn.
+6/6
+
+
+NAME: 'Rakdos's Return ', COST: '[X][B][R]' TYPE: 'Sorcery', SUBTYPES: ''
+Rakdos's Return deals X damage to target opponent. That player discards X cards.
+
+
+NAME: 'Righteous Authority', COST: '[3][W][U]' TYPE: 'Enchantment', SUBTYPES: 'Aura'
+Enchant creature<br />
+Enchanted creature gets +1/+1 for each card in its controller's hand.<br />
+At the beginning of the draw step of the enchanted creature's controller, that player draws an additional card.
+
+
+NAME: 'Risen Sanctuary', COST: '[5][G][W]' TYPE: 'Creature', SUBTYPES: 'Elemental'
+Vigilance
+8/8
+
+
+NAME: 'Rites of Reaping', COST: '[4][B][G]' TYPE: 'Sorcery', SUBTYPES: ''
+Target creature gets +3/+3 until end of turn. Another target creature gets -3/-3 until end of turn.
+
+
+NAME: 'Rix Maadi Guildmage ', COST: '[B][R]' TYPE: 'Creature', SUBTYPES: 'Human:Shaman'
+[B][R]: Target blocking creature gets -1/-1 until end of turn.<br />
+[B][R]: Target player who lost life this turn loses 1 life.
+2/2
+
+
+NAME: 'Search Warrant', COST: '[U][W]' TYPE: 'Sorcery', SUBTYPES: ''
+Target player reveals his or her hand. You gain life equal to the number of cards in that player's hand.
+
+
+NAME: 'Selesnya Charm ', COST: '[G][W]' TYPE: 'Instant', SUBTYPES: ''
+Choose one - Target creature gets +2/+2 and gains trample until end of turn; or exile target creature with power 5 or greater; or put a 2/2 white Knight creature token with vigilance onto the battlefield.
+
+
+NAME: 'Skull Rend', COST: '[3][B][R]' TYPE: 'Sorcery', SUBTYPES: ''
+Skull Rend deals 2 damage to each opponent. Those players each discard two cards at random.
+
+
+NAME: 'Skymark Roc', COST: '[2][W][U]' TYPE: 'Creature', SUBTYPES: 'Bird'
+Flying<br />
+Whenever Skymark Roc attacks, you may return target creature defending player controls with toughness 2 or less to its owner's hand.
+3/3
+
+
+NAME: 'Slaughter Games ', COST: '[2][B][R]' TYPE: 'Sorcery', SUBTYPES: ''
+Slaughter Games can't be countered by spells or abilities.<br />
+Name a nonland card. Search target opponent's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles his or her library.
+
+
+NAME: 'Sluiceway Scorpion ', COST: '[2][B][G]' TYPE: 'Creature', SUBTYPES: 'Scorpion'
+Deathtouch<br />
+Scavenge [1][B][G] <i>([1][B][G], Exile this card from your graveyard: Put a number of +1/+1 counter's equal to this card's power on target creature. Scavenge only as a sorcery.)</i>
+2/2
+
+
+NAME: 'Spawn of Rix Maadi', COST: '[3][B][R]' TYPE: 'Creature', SUBTYPES: 'Horror'
+Unleash <i>(You may have this creature enter the battlefield with a +1/+1 counter on it. It can't block as long as it has a +1/+1 counter on it.)</i>
+5/3
+
+
+NAME: 'Sphinx's Revelation ', COST: '[X][W][U][U]' TYPE: 'Instant', SUBTYPES: ''
+You gain X life and draw X cards.
+
+
+NAME: 'Supreme Verdict ', COST: '[1][W][W][U]' TYPE: 'Sorcery', SUBTYPES: ''
+Supreme Verdict can't be countered.<br />
+<br />
+Destroy all creatures.
+
+
+NAME: 'Teleportal', COST: '[U][R]' TYPE: 'Sorcery', SUBTYPES: ''
+Target creature you control gets +1/+0 until end of turn and is unblockable this turn.<br />
+Overload [3][U][R] <i>(You may cast this spell for its overload cost. If you do, change its text by replacing all instances of "target" with 'each.")</i>
+
+
+NAME: 'Thoughtflare', COST: '[3][U][R]' TYPE: 'Instant', SUBTYPES: ''
+Draw four cards, then discard two cards.
+
+
+NAME: 'Treasured Find', COST: '[B][G]' TYPE: 'Sorcery', SUBTYPES: ''
+Return target card from your graveyard to your hand. Exile Treasured Find.
+
+
+NAME: 'Trestle Troll', COST: '[1][B][G]' TYPE: 'Creature', SUBTYPES: 'Troll'
+Defender, reach<br />
+[1][B][G]: Regenerate Trestle Troll.
+1/4
+
+
+NAME: 'Trostani, Selesnya's Voice ', COST: '[G][G][W][W]' TYPE: 'Legendary:Creature', SUBTYPES: 'Dryad'
+Whenever another creature enters the battlefield under your control, you gain life equal to that creature's toughness.<br />
+[1][G][W],[TAP]: Populate
+2/5
+
+
+NAME: 'Vitu-Ghazi Guildmage', COST: '[G][W]' TYPE: 'Creature', SUBTYPES: 'Dryad:Shaman'
+[4][G][W]: Put a 3/3 green Centaur creature token onto the battlefield.<br />
+[2][G][W]: Populate. <i>(Put a token onto the battlefield that's a copy of a creature token you control.)</i>
+2/2
+
+
+NAME: 'Vraska the Unseen ', COST: '[3][B][G]' TYPE: 'Planeswalker', SUBTYPES: 'Vraska'
++1: Until your next turn, whenever a creature deals combat damage to Vraska the Unseen, destroy that creature.<br />
+-3: Destroy target nonland permanent.<br />
+-7: Put three 1/1 black Assassin tokens onto the battlefield with "Whenever this creature deals combat damage to a player, that player loses the game."
+
+
+NAME: 'Wayfaring Temple ', COST: '[1][G][W]' TYPE: 'Creature', SUBTYPES: 'Elemental'
+Wayfaring Temple's power and toughness are equal to the number of creatures you control.<br />
+Whenever Wayfaring Temple deals combat damage to a player, populate.
+*/*
+
+
+NAME: 'Azor's Elocutors ', COST: '[3][WU][WU]' TYPE: 'Creature', SUBTYPES: 'Human:Advisor'
+At the beginning of your upkeep, put a filibuster counter on Azor's Elocutors. Then if Azor's Elocutors has five or more filibuster counters on it, you win the game.<br />
+Whenever a source deals damage to you, remove a filibuster counter from Azor's Elocutors.
+3/5
+
+
+NAME: 'Blistercoil Weird', COST: '[UR]' TYPE: 'Creature', SUBTYPES: 'Weird'
+Whenever you cast an instant or sorcery spell, Blistercoil Weird gets +1/+1 until end of turn. Untap it.
+1/1
+
+
+NAME: 'Cryptborn Horror ', COST: '[1][BR][BR]' TYPE: 'Creature', SUBTYPES: 'Horror'
+Trample<br />
+Cryptborn Horror enters the battlefield with X +1/+1 counters on it, where X is the total life lost by your opponents this turn.
+0/0
+
+
+NAME: 'Deathrite Shaman', COST: '[BG]' TYPE: 'Creature', SUBTYPES: 'Elf:Shaman'
+[TAP]: Exile target land from a graveyard. Add one mana of any color to your mana pool.<br />
+[B], [TAP]: Exile target instant or sorcery card from a graveyard. Each opponent loses 2 life.<br />
+[G], [TAP]: Exile target creature card from a graveyard. You gain 2 life.
+1/2
+
+
+NAME: 'Dryad Militant ', COST: '[WG]' TYPE: 'Creature', SUBTYPES: 'Dryad:Soldier'
+If an instant or sorcery would be put in a graveyard from anywhere, exile it instead.
+2/1
+
+
+NAME: 'Frostburn Weird', COST: '[UR][UR]' TYPE: 'Creature', SUBTYPES: 'Weird'
+[UR]: Frostburn Weird gets +1/-1 until end of turn.
+1/4
+
+
+NAME: 'Golgari Longlegs', COST: '[3][BG][BG]' TYPE: 'Creature', SUBTYPES: 'Insect'
+
+5/4
+
+
+NAME: 'Growing Ranks ', COST: '[2][WG][WG]' TYPE: 'Enchantment', SUBTYPES: ''
+At the beginning of your upkeep, populate.
+
+
+NAME: 'Judge's Familiar ', COST: '[WU]' TYPE: 'Creature', SUBTYPES: 'Bird'
+Flying<br />
+Sacrifice Judge's Familiar : Counter target instant or sorcery spell unless its controller pays [1].
+1/1
+
+
+NAME: 'Nivmagus Elemental ', COST: '[UR]' TYPE: 'Creature', SUBTYPES: 'Elemental'
+Exile an instant or sorcery spell you control: Put two +1/+1 counters on Nivmagus Elemental.
+1/2
+
+
+NAME: 'Rakdos Cackler', COST: '[BR]' TYPE: 'Creature', SUBTYPES: 'Devil'
+Unleash <i>(You may have this creature enter the battlefield with a +1/+1 counter on it. It can't block as long as it has a +1/+1 counter on it.)</i>
+1/1
+
+
+NAME: 'Rakdos Shred-Freak ', COST: '[BR][BR]' TYPE: 'Creature', SUBTYPES: 'Human:Berserker'
+Haste
+2/1
+
+
+NAME: 'Slitherhead ', COST: '[BG]' TYPE: 'Creature', SUBTYPES: 'Plant:Zombie'
+Scavenge [0] <i>([0], Exile this card from your graveyard: Put a number of +1/+1 counter's equal to this card's power on target creature. Scavenge only as a sorcery.)</i>
+1/1
+
+
+NAME: 'Sundering Growth', COST: '[WG][WG]' TYPE: 'Instant', SUBTYPES: ''
+Destroy target artifact or enchantment, then populate. <i>(Put a token onto the battlefield that's a copy of a creature token you control.)</i>
+
+
+NAME: 'Vassal Soul', COST: '[1][WU][WU]' TYPE: 'Creature', SUBTYPES: 'Spirit'
+Flying
+2/2
+
+
+NAME: 'Azorius Keyrune', COST: '[3]' TYPE: 'Artifact', SUBTYPES: ''
+[TAP] : Add [W] or [U] to your mana pool.<br />
+[W][U]: Azorius Keyrune becomes a 2/2 blue and white Bird artifact creature with flying until end of turn.
+
+
+NAME: 'Chromatic Lantern ', COST: '[3]' TYPE: 'Artifact', SUBTYPES: ''
+Lands you control have "[TAP]: Add one mana of any color to your mana pool."<br />
+[TAP]: Add one mana of any color to your mana pool.
+
+
+NAME: 'Civic Saber', COST: '[1]' TYPE: 'Artifact', SUBTYPES: 'Equipment'
+Equipped creature gets +1/+0 for each of its colors.<br />
+Equip [1]
+
+
+NAME: 'Codex Shredder', COST: '[1]' TYPE: 'Artifact', SUBTYPES: ''
+[TAP]: Target player puts the top card of his or her library into his or her graveyard.<br />
+[5], [TAP], Sacrifice Codex Shredder : Return target card from your graveyard to your hand.
+
+
+NAME: 'Golgari Keyrune ', COST: '[3]' TYPE: 'Artifact', SUBTYPES: ''
+[TAP]: Add [B] or [G] to your mana pool.<br />
+[B][G]: Until end of turn, Golgari Keyrune becomes a 2/2 black and green Insect artifact creature with deathtouch.
+
+
+NAME: 'Izzet Keyrune ', COST: '[3]' TYPE: 'Artifact', SUBTYPES: ''
+[TAP]: Add [U] or [R] to your mana pool.<br />
+[U][R]:Until end of turn, Izzet Keyrune becomes a 2/1 blue and red Elemental artifact creature.<br />
+Whenever Izzet Keyrune deals combat damage to a player, you may draw a card. If you do, discard a card.
+
+
+NAME: 'Pithing Needle ', COST: '[1]' TYPE: 'Artifact', SUBTYPES: ''
+As Pithing Needle enters the battlefield, name a card.<br />
+Activated abilities of sources with the chosen name can't be activated unless they're mana abilities.
+
+
+NAME: 'Rakdos Keyrune ', COST: '[3]' TYPE: 'Artifact', SUBTYPES: ''
+[TAP]: Add [B] or [R] to your mana pool.<br />
+[B][R]: Until end of turn, Rakdos Keyrune becomes a 3/1 black and red Devil artifact creature with first strike.
+
+
+NAME: 'Selesnya Keyrune ', COST: '[3]' TYPE: 'Artifact', SUBTYPES: ''
+[TAP]: Add [G] or [W] to your mana pool.<br />
+[G][W]: Until end of turn, Selesnya Keyrune becomes a 3/3 green and white Wolf artifact creature.
+
+
+NAME: 'Street Sweeper', COST: '[6]' TYPE: 'Artifact:Creature', SUBTYPES: 'Construct'
+Whenever Street Sweeper attacks, destroy all Auras attached to target land.
+4/6
+
+
+NAME: 'Tablet of the Guilds ', COST: '[2]' TYPE: 'Artifact', SUBTYPES: ''
+As Tablet of the Guilds enters the battlefield, choose two colors.<br />
+Whenever you cast a spell, if it's at least one  of the chosen colors, you gain 1 life for each of the chosen colors it is.
+
+
+NAME: 'Volatile Rig', COST: '[4]' TYPE: 'Artifact:Creature', SUBTYPES: 'Construct'
+Trample<br />
+Volatile Rig attacks each turn if able.<br />
+Whenever Volatile Rig is dealt damage, flip a coin. If you lose the flip, sac Volatile Rig.<br />
+When Volatile Rig dies, flip a coin. If you lose the flip, Volatile Rig deals 4 damage to each creature and player.
+4/4
+
+
+NAME: 'Azorius Guildgate', COST: '' TYPE: 'Land', SUBTYPES: 'Gate'
+Azorius Guildgate enters the battlefield tapped.<br />
+[TAP]: Add [W] or [U] to your mana pool.
+
+
+NAME: 'Blood Crypt ', COST: '' TYPE: 'Land', SUBTYPES: 'Swamp:Mountain'
+<i>([TAP]: Add [B] or [R] to your mana pool.)</i><br />
+As Blood Crypt enters the battlefield, you may pay 2 life. If you don't, Blood Crypt enters the battlefield tapped.
+
+
+NAME: 'Golgari Guildgate ', COST: '' TYPE: 'Land', SUBTYPES: 'Gate'
+Golgari Guildgate enters the battlefield tapped.<br />
+[TAP]: Add [B] or [G] to your mana pool.
+
+
+NAME: 'Grove of the Guardian ', COST: '' TYPE: 'Land', SUBTYPES: ''
+[TAP]: Add [1] to your mana pool.<br />
+[3][G][W], [TAP], Tap two untapped creatures you control, Sacrifice Grove of the Guardian: Put an 8/8 green and white Elemental Creature token with vigilance on to the battlefield.
+
+
+NAME: 'Hallowed Fountain ', COST: '' TYPE: 'Land', SUBTYPES: 'Plains:Island'
+<i>([TAP]: Add [W] or [U] to your mana pool.)</i><br />
+As Hallowed Fountain enters the battlefield, you may pay 2 life. If you don't, Hallowed Fountain enters the battlefield tapped.
+
+
+NAME: 'Izzet Guildgate', COST: '' TYPE: 'Land', SUBTYPES: 'Gate'
+Izzet Guildgate enters the battlefield tapped.<br />
+[TAP]: Add [U] or [R] to your mana pool.
+
+
+NAME: 'Overgrown Tomb ', COST: '' TYPE: 'Land', SUBTYPES: 'Swamp:Forest'
+<i>([TAP]: Add [B] or [G] to your mana pool.)</i><br />
+As Overgrown Tomb enters the battlefield, you may pay 2 life. If you don't, Overgrown Tomb enters the battlefield tapped
+
+
+NAME: 'Rakdos Guildgate', COST: '' TYPE: 'Land', SUBTYPES: 'Gate'
+Rakdos Guildgate enters the battlefield tapped.<br />
+[TAP]: Add [B] or [R] to your mana pool.
+
+
+NAME: 'Rogue's Passage', COST: '' TYPE: 'Land', SUBTYPES: ''
+[TAP]: Add [1] to your mana pool.<br />
+[4], [TAP]: Target creature is unblockable this turn.
+
+
+NAME: 'Selesnya Guildgate', COST: '' TYPE: 'Land', SUBTYPES: 'Gate'
+Selesyna Guildgate enters the battlefield tapped.<br />
+[TAP]: Add [G] or [W] to your mana pool.
+
+
+NAME: 'Steam Vents ', COST: '' TYPE: 'Land', SUBTYPES: 'Island:Mountain'
+<i>([TAP]: Add [U] or [R] to your mana pool.)</i><br />
+As Steam Vents enters the battlefield, you may pay 2 life. If you don't, Steam Vents enters the battlefield tapped.
+
+
+NAME: 'Temple Garden ', COST: '' TYPE: 'Land', SUBTYPES: 'Forest:Plains'
+<i>([TAP]: Add [G] or [W] to your mana pool.)</i><br />
+As Temple Garden enters the battlefield, you may pay 2 life. If you don't, Temple Garden enters the battlefield tapped.
+
+
+NAME: 'Transguild Promenade ', COST: '' TYPE: 'Land', SUBTYPES: ''
+Transguild Promenade enters the battlefield tapped.<br />
+When Transguild Promenade enters the battlefield, sacrifice it unless you pay [1].<br />
+[TAP]: Add one mana of any color to your mana pool.
+
+
+NAME: 'Plains', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Plains'
+
+
+
+NAME: 'Plains', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Plains'
+
+
+
+NAME: 'Plains', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Plains'
+
+
+
+NAME: 'Plains', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Plains'
+
+
+
+NAME: 'Plains', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Plains'
+
+
+
+NAME: 'Island', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Island'
+
+
+
+NAME: 'Island', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Island'
+
+
+
+NAME: 'Island', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Island'
+
+
+
+NAME: 'Island', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Island'
+
+
+
+NAME: 'Island', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Island'
+
+
+
+NAME: 'Swamp', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Swamp'
+
+
+
+NAME: 'Swamp', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Swamp'
+
+
+
+NAME: 'Swamp', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Swamp'
+
+
+
+NAME: 'Swamp', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Swamp'
+
+
+
+NAME: 'Swamp', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Swamp'
+
+
+
+NAME: 'Mountain', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Mountain'
+
+
+
+NAME: 'Mountain', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Mountain'
+
+
+
+NAME: 'Mountain', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Mountain'
+
+
+
+NAME: 'Mountain', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Mountain'
+
+
+
+NAME: 'Mountain', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Mountain'
+
+
+
+NAME: 'Forest', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Forest'
+
+
+
+NAME: 'Forest', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Forest'
+
+
+
+NAME: 'Forest', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Forest'
+
+
+
+NAME: 'Forest', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Forest'
+
+
+
+NAME: 'Forest', COST: '' TYPE: 'Basic:Land', SUBTYPES: 'Forest'
+
+
+
+Total cards: 274

@@ -33,9 +33,13 @@ def removeImages(text):
         text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%d.gif" alt="%d" />' % (i, i), '[%d]' % i)
     return text
 
-def doit(url, name):
-#website = urllib2.urlopen(url).read()
-    website = open('spoilers/rtr.txt', 'r').read()
+def doit(url, fname, name):
+    if url != None:
+        website = urllib2.urlopen(url).read()
+    elif fname != None:
+        website = open(fname, 'r').read()
+    else:
+        assert False
     lastPos = 0
     count = 0
     while True:
@@ -68,6 +72,7 @@ def doit(url, name):
     print "Total cards: %d" % count
 
 if __name__ == '__main__':
-    doit('http://www.mtgsalvation.com/gatecrash-spoiler.html', 'gatecrash');
+    doit('http://www.mtgsalvation.com/gatecrash-spoiler.html', None, 'gatecrash');
+    #doit(None, 'spoilers/rtr.txt', 'rtr')
 
     

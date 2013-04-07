@@ -6,8 +6,6 @@
 # if an element is not a list,
 #   { 'type': TSignle, 'value': val }
 
-# UNDONE: +X/+X
-
 EndOfStatement = 0
 
 TAnd = 1

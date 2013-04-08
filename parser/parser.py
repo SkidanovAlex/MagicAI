@@ -11,7 +11,10 @@ def IsPlusXPlusX(word):
 # if yes, dp[l][r][result] will contain backlinks to restore the tree
 def DP(dp, text, l, r, result):
     if result in dp[l][r]:
-        return True
+        if dp[l][r][result] != False:
+            return True
+        else:
+            return False
 
     if isinstance(result, basestring):
         if r == l + 1 and text[l] == result:
@@ -51,8 +54,9 @@ def DP(dp, text, l, r, result):
         print "WARNING: [%d:%d, %d] -- %d ways to achieve" % (l, r, result, ways)
         assert False
     elif ways == 1:
-        print "YAY! [%d:%d, %d]" % (l, r, result);
+        #print "YAY: [%d:%d, %d]" % (l, r, result)
         return True
+    dp[l][r][result] = False
     return False
 
 def RestoreDP(dp, l, r, result):
@@ -67,17 +71,36 @@ def RestoreDP(dp, l, r, result):
         ret.append(RestoreDP(dp, data['split'][id], data['split'][id + 1], state))
     return { 'terminal': 0, 'children': ret, 'rule': data['rule'] }
 
+def Tokenize(text):
+    text = text.lower().replace(".", " DOT ").replace("<br />", " DOT ")
+    while True:
+        p1, p2 = text.find('('), -1
+        if p1 != -1:
+            p2 = text.find(')', p1)
+        q1, q2 = text.find('<'), -1
+        if q1 != -1:
+            q2 = text.find('>', q1)
+        if p2 != -1:
+            text = text[:p1] + text[p2 + 1:]
+        elif q2 != -1:
+            text = text[:q1] + text[q2 + 1:]
+        else: break
+    tokens = text.split()
+    if len(tokens) == 0 or tokens[-1] != "DOT":
+        tokens.append("DOT");
+    return tokens
+
 def ParseCard(text):
     dp = []
-    for i in range(len(text)):
+    tokens = Tokenize(text)
+    for i in range(len(tokens) + 1):
         dp.append([])
-        for j in range(len(text)):
+        for j in range(len(tokens) + 1):
             dp[i].append({})
-    text = text.lower().replace(".", " DOT ").split()
-    success = DP(dp, text, 0, len(text), rules.T_CARD)
+    success = DP(dp, tokens, 0, len(tokens), rules.T_CARD)
     if not success:
         return None
-    tree = RestoreDP(dp, 0, len(text), rules.T_CARD)
+    tree = RestoreDP(dp, 0, len(tokens), rules.T_CARD)
     return tree
 
 def PrettyPrintTree(tree, ident = ""):
@@ -93,5 +116,5 @@ def PrettyPrintTree(tree, ident = ""):
             print "%s}" % ident
 
 if __name__ == "__main__":
-    tree = ParseCard("Target creature gets +1/+1 and gains flying and first strike until end of turn.");
+    tree = ParseCard("Creatures you control get +2/+2 until end of turn.");
     PrettyPrintTree(tree)

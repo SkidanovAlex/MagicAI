@@ -1,7 +1,12 @@
+# This file contains a simple HTML parser for mtgsalvation.com spoilers.
+# For each card it extracts its name, card text, CMC etc, and then passes it
+#    further to the card text parser and code generator
+#
+
 import urllib2
 import re
 
-from parser import ParseCard
+from parser import ParseCard, ParseTreeToStatement
 
 # if pos is not given, returns a string
 # if pos is given, returns (string, newPos)
@@ -73,8 +78,10 @@ def doit(url, fname, name):
             print "%s/%s" % (pwr, tgh);
         print "\n"
         """
-        if ParseCard(cardText) != None:
+        tree = ParseCard(cardText, name)
+        if tree != None:
             print "%s: OK" % name
+            ParseTreeToStatement(tree)
             good += 1
 
         count += 1
@@ -82,6 +89,6 @@ def doit(url, fname, name):
 
 if __name__ == '__main__':
     #doit('http://www.mtgsalvation.com/gatecrash-spoiler.html', None, 'gatecrash');
-    doit(None, 'spoilers/rtr.txt', 'gatecrash')
+    doit(None, 'spoilers/gatecrash.txt', 'gatecrash')
 
     

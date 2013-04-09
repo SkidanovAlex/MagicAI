@@ -1,11 +1,21 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+# This file contains an algorithm that, given card text and set of rules,
+#   produces a parse tree. Rules should be crafted in such a way that every
+#   card has at most one parse tree.
+# It also contains routines to build Statement objects out of parse trees
+#   (which is just traversing the tree and calling the function embedded)
+#
+
 # MTG uses very simple english. I highly suspect that one can use
 #    bison to parse it, but to be safe I use some kind of CFG here
 #
-import parser_rules as rules
+import rules
 
 def IsPlusXPlusX(word):
     # should be good enough
-    return "+" in word and "/" in word
+    return ("+" in word or "-" in word) and "/" in word
 
 # computes if text[l:r] can be represented as `result`
 # if yes, dp[l][r][result] will contain backlinks to restore the tree
@@ -71,8 +81,10 @@ def RestoreDP(dp, l, r, result):
         ret.append(RestoreDP(dp, data['split'][id], data['split'][id + 1], state))
     return { 'terminal': 0, 'children': ret, 'rule': data['rule'] }
 
-def Tokenize(text):
-    text = text.lower().replace(".", " DOT ").replace("<br />", " DOT ")
+def Tokenize(text, name):
+    text = text.replace("—", '-')
+    text = text.lower().replace(name.lower(), "THIS").replace(".", " DOT ").replace("<br />", " DOT ").replace(",", " COMMA ").replace("-", " DASH ").replace(":", " COLON ")
+    # I screw the encoding somewhere...
     while True:
         p1, p2 = text.find('('), -1
         if p1 != -1:
@@ -90,9 +102,9 @@ def Tokenize(text):
         tokens.append("DOT");
     return tokens
 
-def ParseCard(text):
+def ParseCard(text, name):
     dp = []
-    tokens = Tokenize(text)
+    tokens = Tokenize(text, name)
     for i in range(len(tokens) + 1):
         dp.append([])
         for j in range(len(tokens) + 1):
@@ -103,6 +115,7 @@ def ParseCard(text):
     tree = RestoreDP(dp, 0, len(tokens), rules.T_CARD)
     return tree
 
+# This is for debugging only
 def PrettyPrintTree(tree, ident = ""):
     if tree['terminal']:
         print "%s%s" % (ident, tree['state'])
@@ -115,6 +128,14 @@ def PrettyPrintTree(tree, ident = ""):
                 PrettyPrintTree(elem, ident + " ")
             print "%s}" % ident
 
+def ParseTreeToStatement(tree):
+    if tree['terminal']:
+        return tree['state']
+    children = []
+    for elem in tree['children']:
+        children.append(ParseTreeToStatement(elem))
+    return tree['rule'].apply(children)
+
 if __name__ == "__main__":
-    tree = ParseCard("Creatures you control get +2/+2 until end of turn.");
+    tree = ParseCard("<i>Battalion</i> — Whenever Boros Elite and at least two other creatures attack, Boros Elite gets +2/+2 until end of turn.", "Boros Elite");
     PrettyPrintTree(tree)

@@ -23,21 +23,26 @@ def stripTags(value):
     """Returns the given HTML with all tags stripped."""
     return re.sub(r'<[^>]*?>', '', value)
 
+# fixes some mispellings in spoiler texts
+def randomFixes(text):
+    text = text.replace("Ordruum", "Ordruun")
+    return text
+
 def removeImages(text):
     text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/tap.gif" alt="{T}" />', '[TAP]')
     for mana1 in "brguwx":
         MANA1 = mana1.upper()
-        text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s.gif" alt="{%s}" />' % (mana1, MANA1), '[%s]' % MANA1)
-        text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s.gif" alt="%s" class="inlineimg" style="border: none;" />' % (mana1, mana1), '[%s]' % MANA1)
+        text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s.gif" alt="{%s}" />' % (mana1, MANA1), ' [%s] ' % MANA1)
+        text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s.gif" alt="%s" class="inlineimg" style="border: none;" />' % (mana1, mana1), ' [%s] ' % MANA1)
         for mana2 in "brguw":
             MANA2 = mana2.upper()
-            text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s%s.gif" alt="{%s%s}" />' % (MANA1, MANA2, MANA1, MANA2), '[%s%s]' % (MANA1, MANA2))
-            text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s%s.gif" alt="{%s%s}" />' % (mana1, mana2, mana1, mana2), '[%s%s]' % (MANA1, MANA2))
-            text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s%s.gif" alt="%s%s" class="inlineimg" style="border: none;" />' % (mana1, mana2, mana1, mana2), '[%s%s]' % (MANA1, MANA2))
-            text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s%s.gif" alt="%s%s" class="inlineimg" style="border: none;" />' % (mana1, mana2, mana2, mana1), '[%s%s]' % (MANA1, MANA2))
+            text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s%s.gif" alt="{%s%s}" />' % (MANA1, MANA2, MANA1, MANA2), ' [%s%s] ' % (MANA1, MANA2))
+            text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s%s.gif" alt="{%s%s}" />' % (mana1, mana2, mana1, mana2), ' [%s%s] ' % (MANA1, MANA2))
+            text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s%s.gif" alt="%s%s" class="inlineimg" style="border: none;" />' % (mana1, mana2, mana1, mana2), ' [%s%s] ' % (MANA1, MANA2))
+            text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%s%s.gif" alt="%s%s" class="inlineimg" style="border: none;" />' % (mana1, mana2, mana2, mana1), ' [%s%s] ' % (MANA1, MANA2))
     for i in range(100):
-        text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%d.gif" alt="%d" class="inlineimg" style="border: none;" />' % (i, i), '[%d]' % i)
-        text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%d.gif" alt="%d" />' % (i, i), '[%d]' % i)
+        text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%d.gif" alt="%d" class="inlineimg" style="border: none;" />' % (i, i), ' [%d] ' % i)
+        text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%d.gif" alt="%d" />' % (i, i), ' [%d] ' % i)
     return text
 
 def doit(url, fname, name):
@@ -47,6 +52,7 @@ def doit(url, fname, name):
         website = open(fname, 'r').read()
     else:
         assert False
+    website = randomFixes(website)
     lastPos = 0
     count = 0
     good = 0
@@ -54,7 +60,7 @@ def doit(url, fname, name):
         res = parseBetween(website, '<table border="0" cellspacing="0" cellpadding="5" width="290" align="center" style="border: 1px solid black;background-color:white;color: black;">', '</table>', lastPos + 1);
         if res == None: break
         content, lastPos = res
-        name = stripTags(parseBetween(content, '<h3 style="margin: 0;">', '</h3>'))
+        name = stripTags(parseBetween(content, '<h3 style="margin: 0;">', '</h3>')).strip()
         if name[0] == '*': name = name[1:]
         cost, nextPos = parseBetween(content, '<td align="right" width="80px">', '</td>', 0)
         cost = removeImages(cost)

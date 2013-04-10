@@ -17,6 +17,9 @@ def IsPlusXPlusX(word):
     # should be good enough
     return ("+" in word or "-" in word) and "/" in word
 
+def IsPicCost(word):
+    return word.startswith("[") and word.endswith("]")
+
 # computes if text[l:r] can be represented as `result`
 # if yes, dp[l][r][result] will contain backlinks to restore the tree
 def DP(dp, text, l, r, result):
@@ -34,6 +37,10 @@ def DP(dp, text, l, r, result):
     if result == rules.T_PLUS_X_PLUS_X:
         # +x/+x is a special case
         return r == l + 1 and IsPlusXPlusX(text[l])
+
+    if result == rules.T_PIC_COST:
+        # +x/+x is a special case
+        return r == l + 1 and IsPicCost(text[l])
 
     ways = 0
     for rule in rules.rules[result]:
@@ -137,5 +144,5 @@ def ParseTreeToStatement(tree):
     return tree['rule'].apply(children)
 
 if __name__ == "__main__":
-    tree = ParseCard("<i>Battalion</i> — Whenever Boros Elite and at least two other creatures attack, Boros Elite gets +2/+2 until end of turn.", "Boros Elite");
+    tree = ParseCard("Flying, Haste", "Ordruun Veteran");
     PrettyPrintTree(tree)

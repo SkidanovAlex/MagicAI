@@ -90,7 +90,7 @@ def RestoreDP(dp, l, r, result):
 
 def Tokenize(text, name):
     text = text.replace("—", '-')
-    text = text.lower().replace(name.lower(), "THIS").replace(".", " DOT ").replace("<br />", " DOT ").replace(",", " COMMA ").replace("-", " DASH ").replace(":", " COLON ")
+    text = text.lower().replace(name.lower(), "THIS").replace(".", " DOT ").replace("<br />", " DOT ").replace(",", " COMMA ").replace("-", " DASH ").replace(":", " COLON ").replace("\"", " DQ ")
     # I screw the encoding somewhere...
     while True:
         p1, p2 = text.find('('), -1
@@ -144,5 +144,5 @@ def ParseTreeToStatement(tree):
     return tree['rule'].apply(children)
 
 if __name__ == "__main__":
-    tree = ParseCard("Flying, Haste", "Ordruun Veteran");
+    tree = ParseCard("Enchanted land has \"[TAP]: Tap target creature.\"", "Ordruun Veteran");
     PrettyPrintTree(tree)

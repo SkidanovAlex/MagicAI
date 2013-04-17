@@ -13,9 +13,12 @@
 #
 import rules
 
+debug = False
+
+# it should match all +a/+a, -a/-a, -a/+a, and also just a/a
 def IsPlusXPlusX(word):
     # should be good enough
-    return ("+" in word or "-" in word) and "/" in word
+    return "/" in word
 
 def IsPicCost(word):
     return word.startswith("[") and word.endswith("]")
@@ -71,7 +74,8 @@ def DP(dp, text, l, r, result):
         print "WARNING: [%d:%d, %d] -- %d ways to achieve" % (l, r, result, ways)
         assert False
     elif ways == 1:
-        #print "YAY: [%d:%d, %d]" % (l, r, result)
+        if debug:
+            print "YAY: [%d:%d, %d]" % (l, r, result)
         return True
     dp[l][r][result] = False
     return False
@@ -107,6 +111,8 @@ def Tokenize(text, name):
     tokens = text.split()
     if len(tokens) == 0 or tokens[-1] != "DOT":
         tokens.append("DOT");
+    if debug:
+        print tokens
     return tokens
 
 def ParseCard(text, name):
@@ -144,5 +150,6 @@ def ParseTreeToStatement(tree):
     return tree['rule'].apply(children)
 
 if __name__ == "__main__":
-    tree = ParseCard("Enchanted land has \"[TAP]: Tap target creature.\"", "Ordruun Veteran");
+    debug = True
+    tree = ParseCard("Discard Scorchwalker: Target attacking creature gets +5/+1 until end of turn.", "Scorchwalker");
     PrettyPrintTree(tree)

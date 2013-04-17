@@ -95,6 +95,6 @@ def doit(url, fname, name):
 
 if __name__ == '__main__':
     #doit('http://www.mtgsalvation.com/gatecrash-spoiler.html', None, 'gatecrash');
-    doit(None, 'spoilers/gatecrash.txt', 'gatecrash')
+    doit(None, 'spoilers/rtr.txt', 'gatecrash')
 
     

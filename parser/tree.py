@@ -34,9 +34,18 @@ class TargetGetEffectAction(Action):
         self.time = time
 
 class MoveAction(Action):
-    def __init__(self, target, action):
+    def __init__(self, target, action, part_of_field = None):
         self.target = target
         self.action = action
+        self.part_of_field = part_of_field
+
+class PutTokenAction(Action):
+    def __init__(self, stats, colors, creature_type, obj, num):
+        self.stats = stats
+        self.colors = colors
+        self.creature_type = creature_type
+        self.obj = obj
+        self.num = num
 
 class Statement:
     pass
@@ -90,6 +99,12 @@ def BuildAction_TargetGetEffect(obj, effect, time, _):
 def BuildAction_Move(action, obj, _):
     return MoveAction(obj, action)
 
+def BuildAction_MoveFrom(action, obj, _1 , part_of_field,_2):
+    return MoveAction(obj, action, part_of_field)
+
+def BuildAction_PutToken(_1, num, stats, colors, ctype, obj, _4):
+    return PutTokenAction(stats, colors, ctype, obj, num)
+
 def BuildStatement_Action(act):
     return ActionStatement(act)
 
@@ -118,3 +133,6 @@ def BuildStatement_Empty(_):
     return EmptyStatement()
 
 
+#TODO
+def BuildAction_DealDamage(dealer, _1, num, _2, _3, target):
+    return None

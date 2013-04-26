@@ -26,6 +26,7 @@ def stripTags(value):
 # fixes some mispellings in spoiler texts
 def randomFixes(text):
     text = text.replace("Ordruum", "Ordruun")
+    text = text.replace("until end a turn", "until end of turn");
     return text
 
 def removeImages(text):
@@ -84,6 +85,8 @@ def doit(url, fname, name):
             print "%s/%s" % (pwr, tgh);
         print "\n"
         """
+#        if 'U' not in cost: continue
+#        if 'B' in cost: break
         tree = ParseCard(cardText, name)
         if tree != None:
             print "%s: OK" % name
@@ -95,6 +98,6 @@ def doit(url, fname, name):
 
 if __name__ == '__main__':
     #doit('http://www.mtgsalvation.com/gatecrash-spoiler.html', None, 'gatecrash');
-    doit(None, 'spoilers/rtr.txt', 'gatecrash')
+    doit(None, 'spoilers/dgm.txt', 'gatecrash')
 
     

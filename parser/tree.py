@@ -96,10 +96,10 @@ class EnchantWhatStatement(Statement):
 def BuildAction_TargetGetEffect(obj, effect, time, _):
     return TargetGetEffectAction(obj, effect, time)
 
-def BuildAction_Move(action, obj, _):
+def BuildAction_Move(action, obj):
     return MoveAction(obj, action)
 
-def BuildAction_MoveFrom(action, obj, _1 , part_of_field,_2):
+def BuildAction_MoveFrom(action, obj, _ , part_of_field):
     return MoveAction(obj, action, part_of_field)
 
 def BuildAction_PutToken(_1, num, stats, colors, ctype, obj, _4):

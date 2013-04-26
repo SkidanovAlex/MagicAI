@@ -94,7 +94,7 @@ def RestoreDP(dp, l, r, result):
 
 def Tokenize(text, name):
     text = text.replace("—", '-')
-    text = text.lower().replace(name.lower(), "THIS").replace(".", " DOT ").replace("<br />", " DOT ").replace(",", " COMMA ").replace("-", " DASH ").replace(":", " COLON ").replace("\"", " DQ ")
+    text = text.lower().replace(name.lower(), "THIS").replace(".", " DOT ").replace("<br />", " DOT ").replace(",", " COMMA ").replace(" - ", " DASH ").replace(":", " COLON ").replace("\"", " DQ ")
     # I screw the encoding somewhere...
     while True:
         p1, p2 = text.find('('), -1
@@ -151,5 +151,5 @@ def ParseTreeToStatement(tree):
 
 if __name__ == "__main__":
     debug = True
-    tree = ParseCard("Discard Scorchwalker: Target attacking creature gets +5/+1 until end of turn.", "Scorchwalker");
+    tree = ParseCard("Return target creature card from your graveyard to your hand.", "Keymaster Rogue");
     PrettyPrintTree(tree)

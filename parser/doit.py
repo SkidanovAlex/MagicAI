@@ -79,14 +79,16 @@ def doit(url, fname, name):
             pt, nextPos = parseBetween(content, '<td align="right">', '</td>', nextPos)
             assert '/' in pt, pt
             pwr, tgh = pt.split('/')
+        if "Basic" in types and "Land" in types:
+            continue
         """
         print "NAME: '%s', COST: '%s' TYPE: '%s', SUBTYPES: '%s'\n%s" % (name, cost, ':'.join(types), ':'.join(subtypes), cardText)
         if 'Creature' in types:
             print "%s/%s" % (pwr, tgh);
         print "\n"
         """
-#        if 'U' not in cost: continue
 #        if 'B' in cost: break
+#        if 'U' not in cost: continue
         tree = ParseCard(cardText, name)
         if tree != None:
             print "%s: OK" % name

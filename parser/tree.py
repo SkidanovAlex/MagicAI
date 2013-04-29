@@ -77,14 +77,6 @@ class EnterTheBattleFieldModStatement(Statement):
         self.target = target
         self.mod = mod
 
-class EnchantedObjectHasXStatement(Statement):
-    def __init__(self, stmt):
-        self.stmt = stmt
-
-class EnchantedObjectGetsEffectStatement(Statement):
-    def __init__(self, effect):
-        self.effect = effect
-
 class CreatureAbilityStatement(Statement):
     def __init__(self, ability):
         self.ability = ability
@@ -93,7 +85,7 @@ class EnchantWhatStatement(Statement):
     def __init__(self, obj):
         self.object = object
 
-def BuildAction_TargetGetEffect(obj, effect, time, _):
+def BuildAction_TargetGetEffect(obj, effect, time):
     return TargetGetEffectAction(obj, effect, time)
 
 def BuildAction_Move(action, obj):
@@ -114,16 +106,10 @@ def BuildStatement_PaidAction(cost, _, act):
 def BuildStatement_Battalion(_, act):
     return BattalionStatement(act)
 
-def BuildStatement_EnterTheBattleFieldMod(obj, mod, _):
+def BuildStatement_EnterTheBattleFieldMod(obj, mod):
     return EnterTheBattleFieldModStatement(obj, mod)
 
-def BuildStatement_EnchantedObjectHasX(_1, _2, _3, _4, stmt, _5, _6):
-    return EnchantedObjectHasXStatement(stmt)
-
-def BuildStatement_EnchantedObjectGetsEffect(_1, _2, effect):
-    return EnchantedObjectGetsEffectStatement(effect)
-
-def BuildStatement_CreatureAbility(ability, _):
+def BuildStatement_CreatureAbility(ability):
     return CreatureAbilityStatement(ability)
 
 def BuildStatement_EnchantWhat(_, obj):

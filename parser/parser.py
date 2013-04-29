@@ -71,6 +71,7 @@ def DP(dp, text, l, r, result):
             desc.append(r)
             dp[l][r][result] = { 'rule': rule , 'split': desc }
     if ways > 1:
+        print ' '.join(text)
         print "WARNING: [%d:%d, %d] -- %d ways to achieve" % (l, r, result, ways)
         assert False
     elif ways == 1:
@@ -151,5 +152,5 @@ def ParseTreeToStatement(tree):
 
 if __name__ == "__main__":
     debug = True
-    tree = ParseCard("Return target creature card from your graveyard to your hand.", "Keymaster Rogue");
+    tree = ParseCard("Target creature you control gets +0/+1 and gains hexproof until end of turn.", "Faerie Impostor");
     PrettyPrintTree(tree)

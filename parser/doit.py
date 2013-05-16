@@ -8,6 +8,10 @@ import re
 
 from parser import ParseCard, ParseTreeToStatement
 
+PARSE_NEW = 1
+PARSE_ALL = 2
+REPORT = 3
+
 # if pos is not given, returns a string
 # if pos is given, returns (string, newPos)
 def parseBetween(s, op, cl, pos = -1):
@@ -27,6 +31,8 @@ def stripTags(value):
 def randomFixes(text):
     text = text.replace("Ordruum", "Ordruun")
     text = text.replace("until end a turn", "until end of turn");
+    text = text.replace("it's controller's", "its controller's");
+    text = text.replace(", deal 1 damage", ", Bomber Corps deals 1 damage");
     return text
 
 def removeImages(text):
@@ -46,17 +52,21 @@ def removeImages(text):
         text = text.replace('<img src="http://forums.mtgsalvation.com/images/smilies/mana%d.gif" alt="%d" />' % (i, i), ' [%d] ' % i)
     return text
 
-def doit(url, fname, name):
-    if url != None:
-        website = urllib2.urlopen(url).read()
-    elif fname != None:
-        website = open(fname, 'r').read()
-    else:
-        assert False
+def doit(fname, setName, mode):
+    website = open('spoilers/' + fname + '.txt', 'r').read()
+    known = set()
+    try:
+        known = set([x.strip() for x in open('parsed/' + fname + '.list', 'r').readlines()])
+    except IOError as e:
+        print "Failed to open known cards file. Assuming nothing is known."
+        pass
+    new = []
     website = randomFixes(website)
     lastPos = 0
     count = 0
-    good = 0
+
+    report = {}
+
     while True:
         res = parseBetween(website, '<table border="0" cellspacing="0" cellpadding="5" width="290" align="center" style="border: 1px solid black;background-color:white;color: black;">', '</table>', lastPos + 1);
         if res == None: break
@@ -64,7 +74,7 @@ def doit(url, fname, name):
         name = stripTags(parseBetween(content, '<h3 style="margin: 0;">', '</h3>')).strip()
         if name[0] == '*': name = name[1:]
         cost, nextPos = parseBetween(content, '<td align="right" width="80px">', '</td>', 0)
-        cost = removeImages(cost)
+        cost = removeImages(cost).strip()
         typeStr, nextPos = parseBetween(content, '<td width="220px">', '</td>', nextPos)
         typeArr1 = typeStr.split('-')
         types = typeArr1[0].strip().split()
@@ -87,19 +97,54 @@ def doit(url, fname, name):
             print "%s/%s" % (pwr, tgh);
         print "\n"
         """
-#        if 'B' in cost: break
-#        if 'U' not in cost: continue
-        tree = ParseCard(cardText, name)
-        if tree != None:
-            print "%s: OK" % name
-            ParseTreeToStatement(tree)
-            good += 1
+        ok = False
+        if mode == PARSE_ALL or (mode == PARSE_NEW and name not in known):
+            tree = ParseCard(cardText, name)
+            if tree != None:
+                ok = True
+                ParseTreeToStatement(tree)
+                new.append(name)
+        elif name in known:
+            ok = True
+
+        if ok:
+            colorSet = set()
+            colors = []
+            clr = ''
+            inside = False
+            for color in cost:
+                clr += color
+                if color == '[':
+                    inside = True
+                elif color == ']':
+                    inside = False
+                if not inside:
+                    if not clr[1:-1].isdigit() and clr[1:-1] != 'X':
+                        clr = clr.strip()
+                        if clr not in colorSet:
+                            colors.append(clr)
+                            colorSet.add(clr)
+                    clr = ''
+            colors = ''.join(colors)
+            print "[%s] %s: OK%s" % (colors, name, " (new)" if name not in known else "")
+            if colors not in report:
+                report[colors] = 1
+            else:
+                report[colors] += 1
 
         count += 1
-    print "Total cards: %d. Parsed: %d" % (count, good)
+    print "[%s] Total cards: %d. Known: %d. New: %d" % (setName, count, len(known), len(new))
+    for key, value in report.items():
+        print "%s: %s" % (key, value)
+
+    known |= set(new)
+    with open('parsed/' + fname + '.list', 'w') as fout:
+        print >> fout, "\n".join(known)
 
 if __name__ == '__main__':
-    #doit('http://www.mtgsalvation.com/gatecrash-spoiler.html', None, 'gatecrash');
-    doit(None, 'spoilers/dgm.txt', 'gatecrash')
+    mode = PARSE_NEW
+    doit('rtr', 'return to ravnica', mode)
+    doit('gatecrash', 'gatecrash', mode)
+    doit('dgm', 'dragon\'s maze', mode)
 
     

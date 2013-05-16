@@ -54,6 +54,8 @@ def DP(dp, text, l, r, result):
             for rid, state in enumerate(rule.body):
                 if idp[wid][rid] > 0:
                     for nwid in range(wid + 1, r - l + 1):
+                        if rid == len(rule.body) and nwid != r - l:
+                            continue
                         if DP(dp, text, l + wid, l + nwid, state):
                             idp[nwid][rid + 1] += idp[wid][rid]
                             idp_back[nwid][rid + 1] = wid
@@ -152,5 +154,5 @@ def ParseTreeToStatement(tree):
 
 if __name__ == "__main__":
     debug = True
-    tree = ParseCard("Target creature you control gets +0/+1 and gains hexproof until end of turn.", "Faerie Impostor");
+    tree = ParseCard("pay 1 life: Wight of Precinct Six gets +1/+1 for each creature card in your opponents' graveyards.", "Wight of Precinct Six");
     PrettyPrintTree(tree)

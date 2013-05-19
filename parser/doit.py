@@ -33,6 +33,8 @@ def randomFixes(text):
     text = text.replace("until end a turn", "until end of turn");
     text = text.replace("it's controller's", "its controller's");
     text = text.replace(", deal 1 damage", ", Bomber Corps deals 1 damage");
+    text = text.replace("manapool", "mana pool");
+    text = text.replace("its or her library", "his or her library");
     return text
 
 def removeImages(text):
@@ -143,8 +145,8 @@ def doit(fname, setName, mode):
 
 if __name__ == '__main__':
     mode = PARSE_NEW
-    doit('rtr', 'return to ravnica', mode)
     doit('gatecrash', 'gatecrash', mode)
+    doit('rtr', 'return to ravnica', mode)
     doit('dgm', 'dragon\'s maze', mode)
 
     

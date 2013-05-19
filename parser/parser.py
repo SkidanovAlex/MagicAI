@@ -154,5 +154,5 @@ def ParseTreeToStatement(tree):
 
 if __name__ == "__main__":
     debug = True
-    tree = ParseCard("pay 1 life: Wight of Precinct Six gets +1/+1 for each creature card in your opponents' graveyards.", "Wight of Precinct Six");
+    tree = ParseCard("Counter target spell. Its controller puts the top two cards of his or her library into his or her graveyard.", "Mindeye Drake");
     PrettyPrintTree(tree)

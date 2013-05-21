@@ -35,6 +35,14 @@ def randomFixes(text):
     text = text.replace(", deal 1 damage", ", Bomber Corps deals 1 damage");
     text = text.replace("manapool", "mana pool");
     text = text.replace("its or her library", "his or her library");
+    text = text.replace("end of turn; permanents", "end of turn; or permanents");
+    text = text.replace("gets lifelink", "gains lifelink");
+    text = text.replace("cretaures", "creatures");
+    text = text.replace("Squad attacks you", "Squad attacks, you");
+    text = text.replace("your opponent controls", "your opponents control");
+    text = text.replace("2/2 Knight", "2/2 white Knight");
+    text = text.replace("unless it's controller", "unless its controller");
+    text = text.replace("during the untap step", "during its controller's untap step");
     return text
 
 def removeImages(text):
@@ -109,7 +117,7 @@ def doit(fname, setName, mode):
         elif name in known:
             ok = True
 
-        if ok:
+        if ok or name in known:
             colorSet = set()
             colors = []
             clr = ''
@@ -128,7 +136,7 @@ def doit(fname, setName, mode):
                             colorSet.add(clr)
                     clr = ''
             colors = ''.join(colors)
-            print "[%s] %s: OK%s" % (colors, name, " (new)" if name not in known else "")
+            print "[%s] %s: OK%s" % (colors, name, " (new)" if name not in known else " (gone)" if not ok else "")
             if colors not in report:
                 report[colors] = 1
             else:

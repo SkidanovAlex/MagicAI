@@ -18,6 +18,12 @@ class OrList:
     def add_element(self, value):
         self.list.append(value)
 
+class AndOrList:
+    def __init__(self, value):
+        self.list = [value]
+    def add_element(self, value):
+        self.list.append(value)
+
 class CommaSeparatedList:
     def __init__(self, value):
         self.list = [value]

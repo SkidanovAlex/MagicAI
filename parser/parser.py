@@ -20,6 +20,9 @@ def IsPlusXPlusX(word):
     # should be good enough
     return "/" in word
 
+def IsLoyaltyCost(word):
+    return "0" == word or word[0] == '+' or word[0] == '-'
+
 def IsPicCost(word):
     return word.startswith("[") and word.endswith("]")
 
@@ -40,6 +43,10 @@ def DP(dp, text, l, r, result):
     if result == rules.T_PLUS_X_PLUS_X:
         # +x/+x is a special case
         return r == l + 1 and IsPlusXPlusX(text[l])
+
+    if result == rules.T_LOYALTY_COST:
+        # +x/+x is a special case
+        return r == l + 1 and IsLoyaltyCost(text[l])
 
     if result == rules.T_PIC_COST:
         # +x/+x is a special case
@@ -116,6 +123,7 @@ def Tokenize(text, name):
         tokens.append("DOT");
     if debug:
         print tokens
+        print list(enumerate(tokens))
     return tokens
 
 def ParseCard(text, name):
@@ -154,5 +162,6 @@ def ParseTreeToStatement(tree):
 
 if __name__ == "__main__":
     debug = True
-    tree = ParseCard("Return each creature with converted mana cost X from your graveyard to the battlefield.", "Loxodon Smiter");
+    tree = ParseCard("Dimir Keyrune becomes a 2/2 blue and black Horror artifact creature until end of turn and is unblockable this turn.", "Dimir Keyrune");
+
     PrettyPrintTree(tree)

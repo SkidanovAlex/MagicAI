@@ -43,6 +43,11 @@ def randomFixes(text):
     text = text.replace("2/2 Knight", "2/2 white Knight");
     text = text.replace("unless it's controller", "unless its controller");
     text = text.replace("during the untap step", "during its controller's untap step");
+    text = text.replace("its controller pay ", "its controller pays ");
+    text = text.replace("Whenever enchanted land become tapped", "Whenever enchanted land becomes tapped");
+    text = text.replace("reveals the top card of his or her library until", "reveals cards from the top of his or her library until");
+    text = text.replace("0: Until end of turn, Gideon becomes", "0: Until end of turn, Gideon, Champion of Justice  becomes");
+    text = text.replace("becomes a 2/2  blue and black Horror until end", "becomes a 2/2 blue and black Horror artifact creature until end");
     return text
 
 def removeImages(text):

@@ -14,6 +14,33 @@
 import rules
 
 debug = False
+limitsMax = {}
+
+def ComputeLimitsForResult(stack, result):
+    if result in stack:
+        limitsMax[result] = 2000000
+    if result in limitsMax:
+        return
+
+    stack[result] = True
+    limitsMax[result] = 0
+
+    for rule in rules.rules[result]:
+        cur = 0
+        for token in rule.body:
+            if isinstance(token, basestring) or token == rules.T_LOYALTY_COST or token == rules.T_PLUS_X_PLUS_X or token == rules.T_PIC_COST:
+                cur += 1
+            else:
+                ComputeLimitsForResult(stack, token)
+                cur += limitsMax[token]
+        limitsMax[result] = max(limitsMax[result], cur)
+
+    del stack[result]
+
+def ComputeLimits():
+    stack = {}
+    for result in rules.rules.keys():
+        ComputeLimitsForResult(stack, result)
 
 # it should match all +a/+a, -a/-a, -a/+a, and also just a/a
 def IsPlusXPlusX(word):
@@ -28,7 +55,7 @@ def IsPicCost(word):
 
 # computes if text[l:r] can be represented as `result`
 # if yes, dp[l][r][result] will contain backlinks to restore the tree
-def DP(dp, text, l, r, result):
+def DP(dp, text, l, r, result, depth=0):
     if result in dp[l][r]:
         if dp[l][r][result] != False:
             return True
@@ -52,6 +79,9 @@ def DP(dp, text, l, r, result):
         # +x/+x is a special case
         return r == l + 1 and IsPicCost(text[l])
 
+    if r - l > limitsMax[result]:
+        return False
+
     ways = 0
     for rule in rules.rules[result]:
         idp = [[0 for i in range(len(rule.body) + 1)] for j in range(r - l + 1)]
@@ -63,7 +93,7 @@ def DP(dp, text, l, r, result):
                     for nwid in range(wid + 1, r - l + 1):
                         if rid == len(rule.body) and nwid != r - l:
                             continue
-                        if DP(dp, text, l + wid, l + nwid, state):
+                        if DP(dp, text, l + wid, l + nwid, state, depth+1):
                             idp[nwid][rid + 1] += idp[wid][rid]
                             idp_back[nwid][rid + 1] = wid
         wid = r - l
@@ -162,6 +192,7 @@ def ParseTreeToStatement(tree):
 
 if __name__ == "__main__":
     debug = True
-    tree = ParseCard("Dimir Keyrune becomes a 2/2 blue and black Horror artifact creature until end of turn and is unblockable this turn.", "Dimir Keyrune");
+    ComputeLimits()
+    tree = ParseCard("Thespian's Stage becomes a copy of target land and gains this ability.", "Thespian's Stage")
 
     PrettyPrintTree(tree)

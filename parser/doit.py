@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 # This file contains a simple HTML parser for mtgsalvation.com spoilers.
 # For each card it extracts its name, card text, CMC etc, and then passes it
 #    further to the card text parser and code generator
@@ -6,7 +9,7 @@
 import urllib2
 import re
 
-from parser import ParseCard, ParseTreeToStatement
+from parser import ParseCard, ParseTreeToStatement, ComputeLimits
 
 PARSE_NEW = 1
 PARSE_ALL = 2
@@ -31,7 +34,10 @@ def stripTags(value):
 def randomFixes(text):
     text = text.replace("Ordruum", "Ordruun")
     text = text.replace("until end a turn", "until end of turn");
-    text = text.replace("it's controller's", "its controller's");
+    text = text.replace("it's controller", "its controller");
+    text = text.replace("it's owner", "its owner");
+    text = text.replace("except it's name is", "except its name is");
+    text = text.replace("addition to it's other types", "addition to its other types");
     text = text.replace(", deal 1 damage", ", Bomber Corps deals 1 damage");
     text = text.replace("manapool", "mana pool");
     text = text.replace("its or her library", "his or her library");
@@ -48,6 +54,13 @@ def randomFixes(text):
     text = text.replace("reveals the top card of his or her library until", "reveals cards from the top of his or her library until");
     text = text.replace("0: Until end of turn, Gideon becomes", "0: Until end of turn, Gideon, Champion of Justice  becomes");
     text = text.replace("becomes a 2/2  blue and black Horror until end", "becomes a 2/2 blue and black Horror artifact creature until end");
+    text = text.replace("token onto the battlefield that is a copy", "token onto the battlefield that's a copy");
+    text = text.replace("spell’s", "spell's");
+    text = text.replace("Borborygmous", "Borborygmos");
+    text = text.replace("exile Obzedat. If", "exile Obzedat, Ghost Council. If")
+    text = text.replace("At the beginning of your end step you may", "At the beginning of your end step, you may ")
+    text = text.replace("libary", "library")
+    text = text.replace("without paying it's mana cost", "without paying its mana cost")
     return text
 
 def removeImages(text):
@@ -122,30 +135,33 @@ def doit(fname, setName, mode):
         elif name in known:
             ok = True
 
+        colorSet = set()
+        colors = []
+        clr = ''
+        inside = False
+        for color in cost:
+            clr += color
+            if color == '[':
+                inside = True
+            elif color == ']':
+                inside = False
+            if not inside:
+                if not clr[1:-1].isdigit() and clr[1:-1] != 'X':
+                    clr = clr.strip()
+                    if clr not in colorSet:
+                        colors.append(clr)
+                        colorSet.add(clr)
+                clr = ''
+        colors = ''.join(colors)
+
         if ok or name in known:
-            colorSet = set()
-            colors = []
-            clr = ''
-            inside = False
-            for color in cost:
-                clr += color
-                if color == '[':
-                    inside = True
-                elif color == ']':
-                    inside = False
-                if not inside:
-                    if not clr[1:-1].isdigit() and clr[1:-1] != 'X':
-                        clr = clr.strip()
-                        if clr not in colorSet:
-                            colors.append(clr)
-                            colorSet.add(clr)
-                    clr = ''
-            colors = ''.join(colors)
             print "[%s] %s: OK%s" % (colors, name, " (new)" if name not in known else " (gone)" if not ok else "")
             if colors not in report:
                 report[colors] = 1
             else:
                 report[colors] += 1
+        else:
+            print "[%s] %s: FAIL" % (colors, name)
 
         count += 1
     print "[%s] Total cards: %d. Known: %d. New: %d" % (setName, count, len(known), len(new))
@@ -158,6 +174,7 @@ def doit(fname, setName, mode):
 
 if __name__ == '__main__':
     mode = PARSE_NEW
+    ComputeLimits()
     doit('gatecrash', 'gatecrash', mode)
     doit('rtr', 'return to ravnica', mode)
     doit('dgm', 'dragon\'s maze', mode)

@@ -15,25 +15,35 @@ import rules
 
 debug = False
 limitsMax = {}
+limitsMin = {}
 
+# mins could be innacurate, but never larger than the actual min
 def ComputeLimitsForResult(stack, result):
     if result in stack:
         limitsMax[result] = 2000000
+        limitsMin[result] = 1
     if result in limitsMax:
         return
 
     stack[result] = True
     limitsMax[result] = 0
+    limitsMin[result] = 2000000
 
     for rule in rules.rules[result]:
-        cur = 0
+        curMax = 0
+        curMin = 0
         for token in rule.body:
             if isinstance(token, basestring) or token == rules.T_LOYALTY_COST or token == rules.T_PLUS_X_PLUS_X or token == rules.T_PIC_COST:
-                cur += 1
+                curMax += 1
+                curMin += 1
             else:
                 ComputeLimitsForResult(stack, token)
-                cur += limitsMax[token]
-        limitsMax[result] = max(limitsMax[result], cur)
+                curMax += limitsMax[token]
+                curMin += limitsMin[token]
+        limitsMax[result] = max(limitsMax[result], curMax)
+        limitsMin[result] = min(limitsMin[result], curMin)
+        rule.maxL = curMax
+        rule.minL = curMin
 
     del stack[result]
 
@@ -82,16 +92,32 @@ def DP(dp, text, l, r, result, depth=0):
     if r - l > limitsMax[result]:
         return False
 
+    if r - l < limitsMin[result]:
+        return False
+
     ways = 0
     for rule in rules.rules[result]:
+        if r - l > rule.maxL: continue
+        if r - l < rule.minL: continue
+        ok = True
+        for state in rule.body:
+            if isinstance(state, basestring) and state not in text[l:r]:
+                ok = False
+                break
+        if not ok: continue
         idp = [[0 for i in range(len(rule.body) + 1)] for j in range(r - l + 1)]
         idp_back = [[0 for i in range(len(rule.body) + 1)] for j in range(r - l + 1)]
         idp[0][0] = 1
+        maxWid = 0
         for wid in range(r - l):
             for rid, state in enumerate(rule.body):
                 if idp[wid][rid] > 0:
                     for nwid in range(wid + 1, r - l + 1):
-                        if rid == len(rule.body) and nwid != r - l:
+                        if rid == len(rule.body) - 1 and nwid != r - l:
+                            continue
+                        if rid < len(rule.body) - 1 and nwid == r - l:
+                            continue
+                        if rid < len(rule.body) - 1 and isinstance(rule.body[rid + 1], basestring) and text[l + nwid] != rule.body[rid + 1]:
                             continue
                         if DP(dp, text, l + wid, l + nwid, state, depth+1):
                             idp[nwid][rid + 1] += idp[wid][rid]

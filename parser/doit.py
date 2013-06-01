@@ -175,8 +175,8 @@ def doit(fname, setName, mode):
 if __name__ == '__main__':
     mode = PARSE_ALL
     ComputeLimits()
-    doit('gatecrash', 'gatecrash', mode)
+#    doit('gatecrash', 'gatecrash', mode)
     doit('rtr', 'return to ravnica', mode)
-    doit('dgm', 'dragon\'s maze', mode)
+#    doit('dgm', 'dragon\'s maze', mode)
 
     

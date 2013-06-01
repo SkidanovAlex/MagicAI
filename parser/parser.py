@@ -219,6 +219,6 @@ def ParseTreeToStatement(tree):
 if __name__ == "__main__":
     debug = True
     ComputeLimits()
-    tree = ParseCard("Thespian's Stage becomes a copy of target land and gains this ability.", "Thespian's Stage")
+    tree = ParseCard("Whenever you cast an instant or sorcery spell, Guttersnipe deals 2 damage to each opponent.", "Guttersnipe")
 
     PrettyPrintTree(tree)

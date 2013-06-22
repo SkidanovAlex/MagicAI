@@ -97,6 +97,14 @@ def DP(dp, text, l, r, result, depth=0):
 
     ways = 0
     for rule in rules.rules[result]:
+        if (len(rule.body) == 0):
+            if r == l:
+                ways += 1
+                dp[l][r][result] = { 'rule': rule , 'split': [] }
+            continue
+        elif r == l:
+            continue
+
         if r - l > rule.maxL: continue
         if r - l < rule.minL: continue
         ok = True
@@ -109,19 +117,21 @@ def DP(dp, text, l, r, result, depth=0):
         idp_back = [[0 for i in range(len(rule.body) + 1)] for j in range(r - l + 1)]
         idp[0][0] = 1
         maxWid = 0
-        for wid in range(r - l):
+        for wid in range(r - l + 1):
             for rid, state in enumerate(rule.body):
                 if idp[wid][rid] > 0:
-                    for nwid in range(wid + 1, r - l + 1):
+                    for nwid in range(wid, r - l + 1):
                         if rid == len(rule.body) - 1 and nwid != r - l:
                             continue
-                        if rid < len(rule.body) - 1 and nwid == r - l:
+                        if rid < len(rule.body) - 1 and nwid != r - l and isinstance(rule.body[rid + 1], basestring) and text[l + nwid] != rule.body[rid + 1]:
                             continue
-                        if rid < len(rule.body) - 1 and isinstance(rule.body[rid + 1], basestring) and text[l + nwid] != rule.body[rid + 1]:
-                            continue
-                        if DP(dp, text, l + wid, l + nwid, state, depth+1):
-                            idp[nwid][rid + 1] += idp[wid][rid]
-                            idp_back[nwid][rid + 1] = wid
+                        try:
+                            if DP(dp, text, l + wid, l + nwid, state, depth+1):
+                                idp[nwid][rid + 1] += idp[wid][rid]
+                                idp_back[nwid][rid + 1] = wid
+                        except:
+                            print l + wid, l + nwid, state
+                            raise
         wid = r - l
         rid = len(rule.body)
         if idp[wid][rid]:
@@ -153,7 +163,7 @@ def RestoreDP(dp, l, r, result):
     assert result in dp[l][r], "%d:%d, %s" % (l, r, result)
     ret = []
     data = dp[l][r][result]
-    assert len(data['rule'].body) + 1 == len(data['split'])
+    assert len(data['rule'].body) + 1 == len(data['split']) or (len(data['rule'].body) == 0 and len(data['split']) == 0)
     for id, state in enumerate(data['rule'].body):
         ret.append(RestoreDP(dp, data['split'][id], data['split'][id + 1], state))
     return { 'terminal': 0, 'children': ret, 'rule': data['rule'] }
@@ -219,6 +229,6 @@ def ParseTreeToStatement(tree):
 if __name__ == "__main__":
     debug = True
     ComputeLimits()
-    tree = ParseCard("Whenever you cast an instant or sorcery spell, Guttersnipe deals 2 damage to each opponent.", "Guttersnipe")
+    tree = ParseCard("At the beginning of each player's upkeep, that player loses half his or her life, rounded up.", "Search the City")
 
     PrettyPrintTree(tree)

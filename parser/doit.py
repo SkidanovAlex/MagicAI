@@ -47,6 +47,7 @@ def randomFixes(text):
     text = text.replace("Squad attacks you", "Squad attacks, you");
     text = text.replace("your opponent controls", "your opponents control");
     text = text.replace("2/2 Knight", "2/2 white Knight");
+    text = text.replace("battlefield put a 5/5 Wurm", "battlefield, put a 5/5 green Wurm");
     text = text.replace("unless it's controller", "unless its controller");
     text = text.replace("during the untap step", "during its controller's untap step");
     text = text.replace("its controller pay ", "its controller pays ");
@@ -61,6 +62,15 @@ def randomFixes(text):
     text = text.replace("At the beginning of your end step you may", "At the beginning of your end step, you may ")
     text = text.replace("libary", "library")
     text = text.replace("without paying it's mana cost", "without paying its mana cost")
+    text = text.replace("upkeep of enchantment creature's", "upkeep of enchanted creature's")
+    text = text.replace("Selesyna", "Selesnya")
+    text = text.replace("with vigilance on to the battlefield", "with vigilance onto the battlefield")
+    text = text.replace(" would be put in a graveyard from anywhere", " would be put into a graveyard from anywhere")
+    text = text.replace("sac Volatile Rig", "sacrifice Volatile Rig")
+    text = text.replace("power and toughness are equal to", "power and toughness are each equal to")
+    text = text.replace("unless its controller pays X.", "unless its controller pays [X].")
+    text = text.replace("Return Jarad from your graveyard", "Return Jarad, Golgari Lich Lord from your graveyard")
+    text = text.replace("Niv-Mizzet deals 1 damage", "Niv-Mizzet, Dracogenius deals 1 damage")
     return text
 
 def removeImages(text):
@@ -115,6 +125,10 @@ def doit(fname, setName, mode):
         pwr, tgh = -1, -1
         if "Creature" in types:
             pt, nextPos = parseBetween(content, '<td align="right">', '</td>', nextPos)
+            if name == 'Merfolk of the Pearl Trident':
+                pt = '1/1';
+            if name == 'Phylactery Lich':
+                pt = '5/5';
             assert '/' in pt, pt
             pwr, tgh = pt.split('/')
         if "Basic" in types and "Land" in types:
@@ -173,8 +187,10 @@ def doit(fname, setName, mode):
         print >> fout, "\n".join(known)
 
 if __name__ == '__main__':
-    mode = PARSE_ALL
+    mode = PARSE_NEW
     ComputeLimits()
+#    doit('m13', 'm13', mode)
+#    doit('m14', 'm14', mode)
 #    doit('gatecrash', 'gatecrash', mode)
     doit('rtr', 'return to ravnica', mode)
 #    doit('dgm', 'dragon\'s maze', mode)

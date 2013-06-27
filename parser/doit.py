@@ -71,6 +71,12 @@ def randomFixes(text):
     text = text.replace("unless its controller pays X.", "unless its controller pays [X].")
     text = text.replace("Return Jarad from your graveyard", "Return Jarad, Golgari Lich Lord from your graveyard")
     text = text.replace("Niv-Mizzet deals 1 damage", "Niv-Mizzet, Dracogenius deals 1 damage")
+    text = text.replace("in that players hand.", "in that player's hand.");
+    text = text.replace("it's controller", "its controller");
+    text = text.replace("‘Tap: Add", "\"[T]: Add");
+    text = text.replace("\xe2\x80\x98Tap: Add", "\"[T]: Add");
+    text = text.replace("to your mana pool.'", "to your mana pool.\"");
+    text = text.replace("Artifacts you control have indestructible", "Artifacts you control are indestructible");
     return text
 
 def removeImages(text):
@@ -187,12 +193,12 @@ def doit(fname, setName, mode):
         print >> fout, "\n".join(known)
 
 if __name__ == '__main__':
-    mode = PARSE_NEW
+    mode = PARSE_ALL
     ComputeLimits()
 #    doit('m13', 'm13', mode)
 #    doit('m14', 'm14', mode)
 #    doit('gatecrash', 'gatecrash', mode)
-    doit('rtr', 'return to ravnica', mode)
-#    doit('dgm', 'dragon\'s maze', mode)
+#    doit('rtr', 'return to ravnica', mode)
+    doit('dgm', 'dragon\'s maze', mode)
 
     

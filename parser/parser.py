@@ -170,7 +170,14 @@ def RestoreDP(dp, l, r, result):
 
 def Tokenize(text, name):
     text = text.replace("—", '-')
-    text = text.lower().replace(name.lower(), "THIS").replace(".", " DOT ").replace("<br />", " DOT ").replace(",", " COMMA ").replace(" - ", " DASH ").replace(":", " COLON ").replace(";", " SEMICOLON ").replace("\"", " DQ ")
+    if '//' in name:
+        print name
+        pos = name.find('//')
+        text = text.lower().replace(name[:pos].lower().strip(), "THIS")
+        text = text.replace(name[pos + 2:].lower().strip(), "THIS")
+    else:
+        text = text.lower().replace(name.lower(), "THIS")
+    text = text.replace(".", " DOT ").replace("<br />", " DOT ").replace(",", " COMMA ").replace(" - ", " DASH ").replace(":", " COLON ").replace(";", " SEMICOLON ").replace("\"", " DQ ")
     # I screw the encoding somewhere...
     while True:
         p1, p2 = text.find('('), -1
@@ -229,6 +236,6 @@ def ParseTreeToStatement(tree):
 if __name__ == "__main__":
     debug = True
     ComputeLimits()
-    tree = ParseCard("At the beginning of each player's upkeep, that player loses half his or her life, rounded up.", "Search the City")
+    tree = ParseCard("Whenever you cast a red spell or a Mountain enters the battlefield under your control, you gain 1 life.", "Guardian of the Ages")
 
     PrettyPrintTree(tree)

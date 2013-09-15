@@ -77,6 +77,9 @@ def randomFixes(text):
     text = text.replace("\xe2\x80\x98Tap: Add", "\"[T]: Add");
     text = text.replace("to your mana pool.'", "to your mana pool.\"");
     text = text.replace("Artifacts you control have indestructible", "Artifacts you control are indestructible");
+    text = text.replace("Renegerate", "Regenerate");
+    text = text.replace(": Sacrifice Encroaching", ", Sacrifice Encroaching");
+    text = text.replace("Echanted", "Enchanted");
     return text
 
 def removeImages(text):
@@ -176,12 +179,13 @@ def doit(fname, setName, mode):
 
         if ok or name in known:
             print "[%s] %s: OK%s" % (colors, name, " (new)" if name not in known else " (gone)" if not ok else "")
+            assert ok
             if colors not in report:
                 report[colors] = 1
             else:
                 report[colors] += 1
         else:
-            print "[%s] %s: FAIL" % (colors, name)
+            print "[%s] %s: \033[1;31mFAIL\033[0m" % (colors, name)
 
         count += 1
     print "[%s] Total cards: %d. Known: %d. New: %d" % (setName, count, len(known), len(new))
@@ -196,9 +200,10 @@ if __name__ == '__main__':
     mode = PARSE_ALL
     ComputeLimits()
 #    doit('m13', 'm13', mode)
-#    doit('m14', 'm14', mode)
+    doit('m14', 'm14', mode)
 #    doit('gatecrash', 'gatecrash', mode)
 #    doit('rtr', 'return to ravnica', mode)
-    doit('dgm', 'dragon\'s maze', mode)
+#    doit('dgm', 'dragon\'s maze', mode)
+    doit('theros', 'theros', mode)
 
     

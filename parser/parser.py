@@ -21,7 +21,7 @@ limitsMin = {}
 def ComputeLimitsForResult(stack, result):
     if result in stack:
         limitsMax[result] = 2000000
-        limitsMin[result] = 1
+        limitsMin[result] = 0
     if result in limitsMax:
         return
 
@@ -177,6 +177,9 @@ def Tokenize(text, name):
         text = text.replace(name[pos + 2:].lower().strip(), "THIS")
     else:
         text = text.lower().replace(name.lower(), "THIS")
+    if ',' in name:
+        text = text.replace(name.lower()[:name.find(',')], "THIS")
+    text = text.replace("it's", "it is").replace("he's", "he is")
     text = text.replace(".", " DOT ").replace("<br />", " DOT ").replace(",", " COMMA ").replace(" - ", " DASH ").replace(":", " COLON ").replace(";", " SEMICOLON ").replace("\"", " DQ ")
     # I screw the encoding somewhere...
     while True:
@@ -236,6 +239,6 @@ def ParseTreeToStatement(tree):
 if __name__ == "__main__":
     debug = True
     ComputeLimits()
-    tree = ParseCard("Whenever you cast a red spell or a Mountain enters the battlefield under your control, you gain 1 life.", "Guardian of the Ages")
+    tree = ParseCard("Equipped creature can't be blocked except by Walls.", "Artisan of Forms")
 
     PrettyPrintTree(tree)

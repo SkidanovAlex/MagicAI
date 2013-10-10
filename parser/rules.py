@@ -20,15 +20,6 @@ TSingle = 4
 TAndOr = 5
 
 OThis = 1000
-OCreature = 1001
-OCreatures = 1101
-OArtifact = 1002
-OArtifacts = 1003
-OEnchantment = 1004
-OEnchantments = 1005
-OEquipment = 1006
-OLand = 1020
-OGate = 1021
 OCard = 1022
 OPermanent = 1023
 OPlayer = 1024
@@ -90,8 +81,6 @@ MAShuffle = 4010
 MADiscard = 4011
 MADraw = 4012
 
-OQYouControl = 4101
-OQOpponentsControl = 4102
 OQAttacking = 4103
 OQBlocking = 4104
 OQAnother = 4105
@@ -105,7 +94,6 @@ OQEvery = 4112
 OQDealtDamage = 4113
 OQThat = 4114
 OQEnchanted = 4115
-OQYouDontControl = 4116
 OQBlocked = 4117
 OQOther = 4118
 OQRevealed = 4119
@@ -133,11 +121,6 @@ WhoseOpponents = 4405
 WhoseTargets = 4406
 
 ODsAttacks = 4501
-ODsDealsDamage = 4502
-ODsDies = 4503
-ODsBlocks = 4504
-ODsBlocked = 4505
-ODsIsDealtDamage = 4506
 
 
 T_END_OF_STATEMENT = 0
@@ -280,6 +263,8 @@ class Rule:
         self.retFunc = retFunc
     def apply(self, children):
         if self.retObj != None:
+            if self.retObj == Object(0):
+                return None
             return self.retObj
         return self.retFunc(*children)
 
@@ -335,8 +320,8 @@ AddRule(T_AND_OR, ["and"], None, TAnd)
 AddRule(T_AND_OR, ["or"], None, TOr)
 AddRule(T_AND_OR, ["and/or"], None, TAndOr)
 AddRule(T_AND_OR, ["COMMA"], None, TComma)
-AddRule(T_AND_OR, ["COMMA", "and"], None, TComma)
-AddRule(T_AND_OR, ["COMMA", "or"], None, TComma)
+AddRule(T_AND_OR, ["COMMA", "and"], None, TAnd)
+AddRule(T_AND_OR, ["COMMA", "or"], None, TOr)
 
 AddRule(T_NAME, ["THIS"], None, Object(0))
 AddRule(T_NAME, ["advocate", "of", "the", "beast"], None, Object(0))
@@ -361,18 +346,18 @@ AddRule(T_NUMBER_INTERNAL, ["ninety-nine"], None, 99)
 AddRule(T_NUMBER_INTERNAL, ["x"], None, 'x')
 for i in range(51):
     AddRule(T_NUMBER_INTERNAL, [str(i)], None, i)
-AddRule(T_NUMBER, [T_NUMBER_INTERNAL], None, Object(0)) # TODO
-AddRule(T_NUMBER, ["up", "to", T_NUMBER_INTERNAL], None, Object(0)) # TODO
-AddRule(T_NUMBER, ['more', "than", T_NUMBER_INTERNAL], None, Object(0)) # TODO
-AddRule(T_NUMBER, ['fewer', "than", T_NUMBER_INTERNAL], None, Object(0)) # TODO
-AddRule(T_NUMBER, [T_NUMBER_INTERNAL, "or", "more"], None, Object(0)) # TODO
-AddRule(T_NUMBER, [T_NUMBER_INTERNAL, "or", "greater"], None, Object(0)) # TODO
-AddRule(T_NUMBER, [T_NUMBER_INTERNAL, "or", "less"], None, Object(0)) # TODO
-AddRule(T_NUMBER, [T_NUMBER_INTERNAL, "or", "fewer"], None, Object(0)) # TODO
-AddRule(T_NUMBER, ["any", "number", "of"], None, Object(0)) # TODO
-AddRule(T_NUMBER, ["any", "amount", "of"], None, Object(0)) # TODO
-AddRule(T_NUMBER, ["an", "amount", "of"], None, Object(0)) # With "equal to" at the end
-AddRule(T_NUMBER, ["the", "rest"], None, Object(0)) # TODO
+AddRule(T_NUMBER, [T_NUMBER_INTERNAL], None, Object(0))
+AddRule(T_NUMBER, ["up", "to", T_NUMBER_INTERNAL], None, Object(0))
+AddRule(T_NUMBER, ['more', "than", T_NUMBER_INTERNAL], None, Object(0))
+AddRule(T_NUMBER, ['fewer', "than", T_NUMBER_INTERNAL], None, Object(0))
+AddRule(T_NUMBER, [T_NUMBER_INTERNAL, "or", "more"], None, Object(0))
+AddRule(T_NUMBER, [T_NUMBER_INTERNAL, "or", "greater"], None, Object(0))
+AddRule(T_NUMBER, [T_NUMBER_INTERNAL, "or", "less"], None, Object(0))
+AddRule(T_NUMBER, [T_NUMBER_INTERNAL, "or", "fewer"], None, Object(0))
+AddRule(T_NUMBER, ["any", "number", "of"], None, Object(0))
+AddRule(T_NUMBER, ["any", "amount", "of"], None, Object(0))
+AddRule(T_NUMBER, ["an", "amount", "of"], None, Object(0))
+AddRule(T_NUMBER, ["the", "rest"], None, Object(0))
 AddRule(T_NUMBER, ["that", "many"], None, Object(0))
 AddRule(T_NUMBER, ["that", "much"], None, Object(0))
 AddRule(T_NUMBER, ["twice", "that", "many"], None, Object(0))
@@ -406,9 +391,9 @@ AddRule(T_CARD_TYPE, ["instant"], Ident)
 AddRule(T_CARD_TYPE, ["sorcery"], Ident)
 AddRule(T_CARD_TYPE, ["artifact"], Ident)
 AddRule(T_CARD_TYPE, ["artifacts"], Ident)
-AddRule(T_CARD_TYPE, ["equipment"], None, Object(OEquipment))
-AddRule(T_CARD_TYPE, ["enchantment"], None, Object(OEnchantment))
-AddRule(T_CARD_TYPE, ["enchantments"], None, Object(OEnchantments))
+AddRule(T_CARD_TYPE, ["equipment"], Ident)
+AddRule(T_CARD_TYPE, ["enchantment"], Ident)
+AddRule(T_CARD_TYPE, ["enchantments"], Ident)
 AddRule(T_CARD_TYPE, ["land"], Ident)
 AddRule(T_CARD_TYPE, ["lands"], Ident)
 AddRule(T_CARD_TYPE, ["basic", "land"], None, "basic land")
@@ -417,8 +402,8 @@ AddRule(T_CARD_TYPE, ["nonland"], Ident)
 AddRule(T_CARD_TYPE, ["noncreature"], Ident)
 AddRule(T_CARD_TYPE, ["nonartifact"], Ident)
 AddRule(T_CARD_TYPE, ["nontoken"], Ident)
-AddRule(T_CARD_TYPE, ["gate"], None, Object(OGate))
-AddRule(T_CARD_TYPE, ["gates"], None, Object(OGate))
+AddRule(T_CARD_TYPE, ["gate"], Ident)
+AddRule(T_CARD_TYPE, ["gates"], Ident)
 AddRule(T_CARD_TYPE, [T_BASIC_LAND_TYPE], Ident)
 
 AddRule(T_OBJECT_TYPE, ["aura"], None, Object(OAura))
@@ -455,9 +440,9 @@ AddRule(T_OBJECT_INTERNAL, ["he", "or", "she"], None, Object(OIt))
 AddRule(T_OBJECT_INTERNAL, ["them"], None, Object(OIt))
 AddRule(T_OBJECT_INTERNAL, [T_OBJECT_TYPE], Ident)
 AddRule(T_OBJECT_INTERNAL, ["THIS"], None, Object(OThis))
-AddRule(T_OBJECT_INTERNAL, ["the", "other"], None, Object(OThis)) # Jarad's Orders, revealing cards
-AddRule(T_OBJECT_INTERNAL, ["the", "copy"], None, Object(OThis)) # Elite Arcanist
-AddRule(T_OBJECT_INTERNAL, ["the", "copies"], None, Object(OThis)) # Chandra
+AddRule(T_OBJECT_INTERNAL, ["the", "other"], None, Object(0)) # Jarad's Orders, revealing cards
+AddRule(T_OBJECT_INTERNAL, ["the", "copy"], None, Object(0)) # Elite Arcanist
+AddRule(T_OBJECT_INTERNAL, ["the", "copies"], None, Object(0)) # Chandra
 # TODO
 AddRule(T_OBJECT_INTERNAL, ["source"], None, Object(0))
 AddRule(T_OBJECT_INTERNAL, ["sources"], None, Object(0))
@@ -474,20 +459,20 @@ AddRule(T_OBJECT_INTERNAL, ["the", "top", W_CARD, "of", T_WHOSE, "library"], Non
 AddRule(T_OBJECT_INTERNAL, ["the", "top", T_NUMBER, "cards", "of", T_WHOSE, "library"], None, Object(0))
 
 # TODO: generalize 'its'
-AddRule(T_OBJECT_QUALIFIER_AFTER, [T_OBJECTS, W_CONTROL], None, OQYouControl)
-AddRule(T_OBJECT_QUALIFIER_AFTER, [T_OBJECTS, W_OWN], None, OQYouControl)
-AddRule(T_OBJECT_QUALIFIER_AFTER, [T_OBJECTS, W_DONT, "control"], None, OQYouDontControl)
-AddRule(T_OBJECT_QUALIFIER_AFTER, [T_OBJECTS, "neither", W_OWN, "or", W_CONTROL], None, OQYouDontControl)
-AddRule(T_OBJECT_QUALIFIER_AFTER, ["dealt", T_DAMAGE, "by", T_OBJECTS, "this", "turn"], None, OQDealtDamage)
-AddRule(T_OBJECT_QUALIFIER_AFTER, ["that", "dealt", T_DAMAGE, "this", "turn"], None, OQDealtDamage)
-AddRule(T_OBJECT_QUALIFIER_AFTER, ["that", "dealt", T_DAMAGE, "to", T_OBJECTS, "this", "turn"], None, OQDealtDamage)
+AddRule(T_OBJECT_QUALIFIER_AFTER, [T_OBJECTS, W_CONTROL], None, Object(0))
+AddRule(T_OBJECT_QUALIFIER_AFTER, [T_OBJECTS, W_OWN], None, Object(0))
+AddRule(T_OBJECT_QUALIFIER_AFTER, [T_OBJECTS, W_DONT, "control"], None, Object(0))
+AddRule(T_OBJECT_QUALIFIER_AFTER, [T_OBJECTS, "neither", W_OWN, "or", W_CONTROL], None, Object(0))
+AddRule(T_OBJECT_QUALIFIER_AFTER, ["dealt", T_DAMAGE, "by", T_OBJECTS, "this", "turn"], None, Object(0))
+AddRule(T_OBJECT_QUALIFIER_AFTER, ["that", "dealt", T_DAMAGE, "this", "turn"], None, Object(0))
+AddRule(T_OBJECT_QUALIFIER_AFTER, ["that", "dealt", T_DAMAGE, "to", T_OBJECTS, "this", "turn"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["that", "died"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["each"], None, Object(0))
 #TODO
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", T_ABILITIES], None, IdentSkip1)
-AddRule(T_OBJECT_QUALIFIER_AFTER, ["without", T_ABILITIES], None, IdentSkip1)
-AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", T_COUNTERS_ON], None, IdentSkip1)
-AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", T_COUNTERS], None, IdentSkip1)
+AddRule(T_OBJECT_QUALIFIER_AFTER, ["without", T_ABILITIES], None, Object(0))
+AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", T_COUNTERS_ON], None, Object(0))
+AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", T_COUNTERS], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", "power", T_NUMBER], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", "toughness", T_NUMBER], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", "power", T_EQUAL_TO], None, Object(0))
@@ -498,6 +483,7 @@ AddRule(T_OBJECT_QUALIFIER_AFTER, ["blocking", "or", "blocked", "by", T_OBJECTS]
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["it", "is", "blocking"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["exiled", "with", T_OBJECTS], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", "the", "same", "name", "as", T_OBJECT], None, Object(0))
+AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", "different", "names"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", "converted", "mana", "cost", T_NUMBER], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", "converted", "mana", "cost", T_GREATER_LESS, T_WHERE_X_INTERNAL], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", "converted", "mana", "costs", T_NUMBER, T_AND_OR, T_NUMBER], None, Object(0)) # firemind's foresight
@@ -507,11 +493,13 @@ AddRule(T_OBJECT_QUALIFIER_AFTER, [W_CAST, "this", "way"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["revealed", "this", "way"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["dealt", "damage", "this", "way"], None, Object(0)) # aurelia's fury
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["exiled", "this", "way"], None, Object(0))
+AddRule(T_OBJECT_QUALIFIER_AFTER, ["you", "exiled"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["returned", "this", "way"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["tapped", "this", "way"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["from", "among", "them"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["among", "them"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["named", T_NAME], None, Object(0)) # biovisionary
+AddRule(T_OBJECT_QUALIFIER_AFTER, ["named", T_NAME, "or", T_NAME], None, Object(0)) # bogbrew witch
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", "the", "chosen", "name"], None, Object(0)) # pitching needle
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["with", "that", "name"], None, Object(0)) # pitching needle
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["not", "named", T_NAME], None, Object(0))
@@ -527,7 +515,7 @@ AddRule(T_OBJECT_QUALIFIER_AFTER, ["that", "was", T_MOVE_ACTION_TYPE, T_MOVE_TO_
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["other", "than", T_OBJECTS, "card"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_AFTER, ["of", "your", "choice"], None, Object(0))
 
-AddRule(T_OBJECT_QUALIFIER_BEFORE, ["the"], None, Object(OQOneOfThe))
+AddRule(T_OBJECT_QUALIFIER_BEFORE, ["the"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_BEFORE, ["one", "of"], None, Object(OQOneOfThe))
 AddRule(T_OBJECT_QUALIFIER_BEFORE, ["another"], None, Object(OQAnother))
 AddRule(T_OBJECT_QUALIFIER_BEFORE, ["other"], None, Object(OQOther))
@@ -550,16 +538,16 @@ AddRule(T_OBJECT_QUALIFIER_BEFORE, ["discarded"], None, Object(OQDiscarded))
 AddRule(T_OBJECT_QUALIFIER_BEFORE, ["sacrificed"], None, Object(OQSacrificed))
 AddRule(T_OBJECT_QUALIFIER_BEFORE, ["revealed"], None, Object(OQRevealed))
 AddRule(T_OBJECT_QUALIFIER_BEFORE, ["chosen"], None, Object(OQChosen))
-AddRule(T_OBJECT_QUALIFIER_BEFORE, ["exiled"], None, Object(OQDefending)) # angel of serenity
+AddRule(T_OBJECT_QUALIFIER_BEFORE, ["exiled"], None, Object(0)) # angel of serenity
 AddRule(T_OBJECT_QUALIFIER_BEFORE, ["defending"], None, Object(OQDefending))
-AddRule(T_OBJECT_QUALIFIER_BEFORE, ["additional"], None, Object(OQDefending))
+AddRule(T_OBJECT_QUALIFIER_BEFORE, ["additional"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_BEFORE, ["next"], None, Object(0))
 AddRule(T_OBJECT_QUALIFIER_BEFORE, [T_NUMBER], Ident)
 AddRule(T_OBJECT_QUALIFIER_BEFORE, [T_COLOR], Ident)
 AddRule(T_OBJECT_QUALIFIER_BEFORE, [T_CREATURE_TYPE_INTERNAL], Ident)
-AddRule(T_OBJECT_QUALIFIER_BEFORE, ["your"], Ident) # TODO: T_WHOSE conflicts with T_NUMBER
+AddRule(T_OBJECT_QUALIFIER_BEFORE, ["your"], None, Object(0)) # TODO: T_WHOSE conflicts with T_NUMBER
 
-AddRule(T_OBJECT_QUALIFIERS_AFTER, [T_EQUAL_TO], None, OQYouControl)
+AddRule(T_OBJECT_QUALIFIERS_AFTER, [T_EQUAL_TO], Ident)
 AddRule(T_OBJECT_QUALIFIERS_AFTER, [T_OBJECT_QUALIFIER_AFTER], Ident)
 AddRule(T_OBJECT_QUALIFIERS_BEFORE, [T_OBJECT_QUALIFIER_BEFORE], Ident)
 
@@ -616,8 +604,8 @@ AddRule(T_PART_OF_FIELD, ["a", "single", T_PART_OF_FIELD_INTERNAL], None, Object
 AddRule(T_PART_OF_FIELD, ["the", "top", "of", T_WHOSE, "library"], None, Object(0))
 AddRule(T_PART_OF_FIELD, ["anywhere"], None, Object(0))
 
-AddRule(T_WHOSE, ["a"], None, WhoseAnyones)
-AddRule(T_WHOSE, ["the"], None, WhoseAnyones)
+AddRule(T_WHOSE, ["a"], None, Object(0))
+AddRule(T_WHOSE, ["the"], None, Object(0))
 AddRule(T_WHOSE, ["all"], None, WhoseAnyones)
 AddRule(T_WHOSE, ["your"], None, WhoseYour)
 AddRule(T_WHOSE, ["its"], None, WhoseYour)
@@ -651,9 +639,9 @@ AddRule(T_ABILITY, ["evolve"], None, Object(EEvolve))
 AddRule(T_ABILITY, ["reach"], None, Object(EReach))
 AddRule(T_ABILITY, ["double", "strike"], None, Object(EDoubleStrike))
 AddRule(T_ABILITY, ["unleash"], None, Object(EUnleash))
-AddRule(T_ABILITY, ["scavenge", T_COST], None, Object(EScavenge)) # TODO
-AddRule(T_ABILITY, ["bestow", T_COST], None, Object(0)) # TODO
-AddRule(T_ABILITY, ["monstrosity", T_NUMBER], None, Object(0)) # TODO
+AddRule(T_ABILITY, ["scavenge", T_COST], None, Object(0))
+AddRule(T_ABILITY, ["bestow", T_COST], None, Object(0))
+AddRule(T_ABILITY, ["monstrosity", T_NUMBER], None, Object(0))
 AddRule(T_ABILITY, ["swampwalk"], None, Object(ESwampwalk))
 AddRule(T_ABILITY, ["islandwalk"], None, Object(EIslandwalk))
 AddRule(T_ABILITY, ["lifelink"], None, Object(ELifelink))
@@ -662,7 +650,8 @@ AddRule(T_ABILITY, ["flash"], None, Object(EFlash))
 AddRule(T_ABILITY, ["intimidate"], None, Object(EIntimidate))
 AddRule(T_ABILITY, ["hexproof"], None, Object(EHexproof))
 AddRule(T_ABILITY, ["this", "ability"], None, Object(EThisAbility))
-AddRule(T_ABILITY, [T_PROTECTION], None, Object(EThisAbility))
+AddRule(T_ABILITY, ["indestructible"], None, Object(0))
+AddRule(T_ABILITY, [T_PROTECTION], None, Object(0))
 
 AddRule(T_ABILITIES, [T_ABILITY], Ident)
 AddRule(T_ABILITIES, [T_ABILITY, T_AND_OR, T_ABILITIES], AndOr)
@@ -671,6 +660,7 @@ AddRule(T_CREATURE_TYPE_INTERNAL, ["angel"], Ident)
 AddRule(T_CREATURE_TYPE_INTERNAL, ["assassin"], Ident)
 AddRule(T_CREATURE_TYPE_INTERNAL, ["beast"], Ident)
 AddRule(T_CREATURE_TYPE_INTERNAL, ["bird"], Ident)
+AddRule(T_CREATURE_TYPE_INTERNAL, ["boar"], Ident)
 AddRule(T_CREATURE_TYPE_INTERNAL, ["cat"], Ident)
 AddRule(T_CREATURE_TYPE_INTERNAL, ["centaur"], Ident)
 AddRule(T_CREATURE_TYPE_INTERNAL, ["cleric"], Ident)
@@ -708,6 +698,7 @@ AddRule(T_CREATURE_TYPE_INTERNAL, ["rogue"], Ident)
 AddRule(T_CREATURE_TYPE_INTERNAL, ["rogues"], None, "rogue")
 AddRule(T_CREATURE_TYPE_INTERNAL, ["wall"], Ident)
 AddRule(T_CREATURE_TYPE_INTERNAL, ["walls"], None, "wall")
+AddRule(T_CREATURE_TYPE_INTERNAL, ["weird"], Ident)
 AddRule(T_CREATURE_TYPE_INTERNAL, ["wolf"], Ident)
 AddRule(T_CREATURE_TYPE_INTERNAL, ["wurm"], Ident)
 AddRule(T_CREATURE_TYPE_INTERNAL, ["zombie"], Ident)
@@ -820,6 +811,7 @@ AddRule(T_GET_EFFECT_INTERNAL, [W_GETS, T_PLUS_X_PLUS_X], IdentSkip1)
 AddRule(T_GET_EFFECT_INTERNAL, [W_GETS, T_PLUS_X_PLUS_X, "or", T_PLUS_X_PLUS_X], None, Object(0))
 AddRule(T_GET_EFFECT_INTERNAL, [W_GETS, T_ABILITIES], IdentSkip1)
 AddRule(T_GET_EFFECT_INTERNAL, ["loses", T_ABILITIES], IdentSkip1)
+AddRule(T_GET_EFFECT_INTERNAL, ["loses", "all", "abilities"], None, Object(0))
 AddRule(T_GET_EFFECT_INTERNAL, [W_HAVE, T_ABILITIES], IdentSkip1)
 AddRule(T_GET_EFFECT_INTERNAL, [W_IS, "indestructible"], IdentSkip1)
 AddRule(T_GET_EFFECT_INTERNAL, [W_HAVE, "indestructible"], IdentSkip1)
@@ -829,8 +821,10 @@ AddRule(T_GET_EFFECT_INTERNAL, [W_HAVE, "DQ", T_STATEMENTS, "DQ"], None, Object(
 AddRule(T_GET_EFFECT_INTERNAL, [W_GETS, "an", "emblem", "with", "DQ", T_STATEMENT, "DQ"], None, Object(0)) # TODO
 AddRule(T_GET_EFFECT_INTERNAL, [W_GETS, "an", "emblem", "with", "DQ", T_STATEMENTS, "DQ"], None, Object(0)) # TODO
 AddRule(T_GET_EFFECT_INTERNAL, [W_IS, T_OBJECTS], None, Object(0))
+AddRule(T_GET_EFFECT_INTERNAL, ["becomes", T_OBJECTS], None, Object(0))
 AddRule(T_GET_EFFECT_INTERNAL, ["isn't", T_OBJECTS], None, Object(0))
 AddRule(T_GET_EFFECT_INTERNAL, [W_IS, "a", T_PLUS_X_PLUS_X, T_OBJECTS], None, Object(0))
+AddRule(T_GET_EFFECT_INTERNAL, ["becomes", "a", T_PLUS_X_PLUS_X, T_OBJECTS], None, Object(0))
 AddRule(T_GET_EFFECT_INTERNAL, [W_IS, T_COLOR_OR_TYPE_TERM], None, Object(0))
 
 AddRule(T_GET_EFFECT_QUALIFIER_AFTER, [T_UNTIL], None, Object(0))
@@ -864,9 +858,11 @@ AddRule(T_CANT_ATC_BLOCK_QUALIFIER, ["this", "combat"], None, Object(0))
 AddRule(T_CANT_ATC_BLOCK_QUALIFIER, ["alone"], None, Object(0))
 AddRule(T_CANT_ATC_BLOCK_QUALIFIER, ["by", T_OBJECTS], None, Object(0))
 AddRule(T_CANT_ATC_BLOCK_QUALIFIER, ["except", T_CANT_ATC_BLOCK_QUALIFIER], None, Object(0))
+AddRule(T_CANT_ATC_BLOCK_QUALIFIER, ["only", T_OBJECTS], None, Object(0))
 AddRule(T_CANT_ATC_BLOCK_QUALIFIERS, [T_CANT_ATC_BLOCK_QUALIFIER], None, Object(0))
 AddRule(T_CANT_ATC_BLOCK_QUALIFIERS, [T_CANT_ATC_BLOCK_QUALIFIER, T_CANT_ATC_BLOCK_QUALIFIERS], None, Object(0))
 AddRule(T_CANT_ATC_BLOCK, ["can", T_ATTACK_BLOCK_BE_BLOCKED], None, Object(0))
+AddRule(T_CANT_ATC_BLOCK, ["can", T_ATTACK_BLOCK_BE_BLOCKED, T_CANT_ATC_BLOCK_QUALIFIERS], None, Object(0))
 AddRule(T_CANT_ATC_BLOCK, ["can't", T_ATTACK_BLOCK_BE_BLOCKED], None, Object(0))
 AddRule(T_CANT_ATC_BLOCK, ["can't", T_ATTACK_BLOCK_BE_BLOCKED, T_CANT_ATC_BLOCK_QUALIFIERS], None, Object(0))
 # TODO: some of these might be reasonable to formalize later
@@ -885,6 +881,7 @@ AddRule(T_COUNTER_TYPE, ["loyalty"], Ident)
 AddRule(T_COUNTER_TYPE, ["filibuster"], Ident)
 AddRule(T_COUNTER_TYPE, ["charge"], Ident)
 AddRule(T_COUNTER_TYPE, ["wish"], Ident)
+AddRule(T_COUNTER_TYPE, ["fate"], Ident)
 
 AddRule(T_COUNTERS, [T_NUMBER, T_COUNTER_TYPE, W_COUNTER], None, Object(0)) # TODO
 AddRule(T_COUNTERS, [T_NUMBER, W_COUNTER], None, Object(0)) # TODO
@@ -894,6 +891,7 @@ AddRule(T_COUNTERS, [W_COUNTER], None, Object(0)) # TODO
 AddRule(T_COUNTERS_ON, [T_COUNTERS, "on", T_OBJECTS], None, Object(0)) # TODO
 
 AddRule(T_PUT_COUNTER, ["put", T_COUNTERS_ON, T_FOR_EACH_OPT], None, Object(0)) # TODO
+AddRule(T_PUT_COUNTER, ["put", "a", "number", "of", T_COUNTERS_ON, T_EQUAL_TO], None, Object(0)) # TODO
 AddRule(T_PUT_COUNTER, ["double", "the", "number", "of", T_COUNTERS_ON, T_FOR_EACH_OPT], None, Object(0)) # TODO
 
 AddRule(T_REMOVE_COUNTER, ["remove", T_COUNTERS, "from", T_OBJECTS], None, Object(0)) # TODO
@@ -901,7 +899,7 @@ AddRule(T_REMOVE_COUNTER, ["remove", T_COUNTERS, "from", "among", T_OBJECTS], No
 AddRule(T_REMOVE_COUNTER, ["remove", T_COUNTERS, "from", T_OBJECTS, T_FOR_EACH], None, Object(0)) # TODO
 
 AddRule(T_UNTIL, ['until', 'end', 'of', 'turn'], None, Object(TEndOfTurn))
-AddRule(T_UNTIL, ['until', T_WHOSE, "next", 'turn'], None, Object(TEndOfTurn))
+AddRule(T_UNTIL, ['until', T_WHOSE, "next", 'turn'], None, Object(0))
 AddRule(T_UNTIL, ['until', T_OBJECTS, T_OBJECT_DOES], None, Object(0))
 AddRule(T_UNTIL, ['this', 'turn'], None, Object(TEndOfTurn))
 AddRule(T_UNTIL_OPT, [T_UNTIL], Ident)
@@ -931,11 +929,11 @@ AddRule(T_HEROIC, ['heroic', 'DASH'], None, Object(Dummy))
 
 AddRule(T_COST_PART, [T_PIC_COST], Ident)
 AddRule(T_COST_PART, [T_MOVE_ACTION], Ident)
-AddRule(T_COST_PART, ["pay", T_NUMBER, "life"], None, Object(0)) # TODO
-AddRule(T_COST_PART, [T_REMOVE_COUNTER], None, Object(0)) # TODO
+AddRule(T_COST_PART, ["pay", T_NUMBER, "life"], None, Object(0))
+AddRule(T_COST_PART, [T_REMOVE_COUNTER], None, Object(0))
 AddRule(T_COST, [T_COST_PART], Ident)
-AddRule(T_COST, [T_COST_PART, T_COST], None, Object(0)) # TODO
-AddRule(T_COST, [T_COST_PART, "COMMA", T_COST], None, Object(0)) # TODO
+AddRule(T_COST, [T_COST_PART, T_COST], None, Object(0))
+AddRule(T_COST, [T_COST_PART, "COMMA", T_COST], None, Object(0))
 
 AddRule(T_MANA, [T_PIC_COST], Ident)
 AddRule(T_MANA, [T_PIC_COST, T_MANA], None, Object(0))
@@ -944,34 +942,37 @@ AddRule(T_MANA, [T_NUMBER, "mana", "of", "any", "color"], None, Object(0))
 AddRule(T_MANA, [T_NUMBER, "mana", "of", "that", "color"], None, Object(0))
 AddRule(T_MANA, [T_NUMBER, "mana", "in", "any", "combination", "of", "colors"], None, Object(0))
 
-AddRule(T_UNDER_WHOSE_CONTROL, ["under", T_WHOSE, "control"], None, Object(0)) # TODO
+AddRule(T_UNDER_WHOSE_CONTROL, ["under", T_WHOSE, "control"], None, Object(0))
 
-AddRule(T_ENTERS_THE_BF_PREFIX, [W_ENTER, "the", "battlefield"], None, Object(0)) # TODO
-AddRule(T_ENTERS_THE_BF, [T_ENTERS_THE_BF_PREFIX], None, Object(0)) # TODO
-AddRule(T_ENTERS_THE_BF, [T_ENTERS_THE_BF_PREFIX, T_UNDER_WHOSE_CONTROL], None, Object(0)) # TODO
+AddRule(T_ENTERS_THE_BF_PREFIX, [W_ENTER, "the", "battlefield"], None, Object(0))
+AddRule(T_ENTERS_THE_BF, [T_ENTERS_THE_BF_PREFIX], None, Object(0))
+AddRule(T_ENTERS_THE_BF, [T_ENTERS_THE_BF_PREFIX, T_UNDER_WHOSE_CONTROL], None, Object(0))
 
 AddRule(T_OBJECT_DOES, [T_ENTERS_THE_BF], Ident)
 AddRule(T_OBJECT_DOES, ["leaves", "the", T_PART_OF_FIELD_INTERNAL], None, Object(0))
 AddRule(T_OBJECT_DOES, ["evolves"], None, Object(0))
 AddRule(T_OBJECT_DOES, [T_ATTACK_BLOCK_BE_BLOCKED], None, Object(0))
-AddRule(T_OBJECT_DOES, ['attacks', "for", "the", "first", "time", "each", "turn"], None, Object(ODsAttacks))
+AddRule(T_OBJECT_DOES, ['attacks', "for", "the", "first", "time", "each", "turn"], None, Object(0))
 AddRule(T_OBJECT_DOES, ['becomes', 'the', 'target', 'of', T_OBJECTS], None, Object(0))
 AddRule(T_OBJECT_DOES, ['becomes', 'monstrous'], None, Object(0))
 AddRule(T_OBJECT_DOES, ['dies'], None, Object(ODsAttacks))
-AddRule(T_OBJECT_DOES, ['deals', T_DAMAGE], None, Object(ODsDealsDamage))
+AddRule(T_OBJECT_DOES, ['dies', 'this', "turn"], None, Object(0))
+AddRule(T_OBJECT_DOES, ['deal', T_DAMAGE], None, Object(0))
+AddRule(T_OBJECT_DOES, ['deals', T_DAMAGE], None, Object(0))
+AddRule(T_OBJECT_DOES, ['deal', T_DAMAGE, "to", T_OBJECTS], None, Object(0)) # TODO
 AddRule(T_OBJECT_DOES, ['deals', T_DAMAGE, "to", T_OBJECTS], None, Object(0)) # TODO
-AddRule(T_OBJECT_DOES, ["is", "dealt", T_DAMAGE], None, Object(ODsIsDealtDamage))
+AddRule(T_OBJECT_DOES, ["is", "dealt", T_DAMAGE], None, Object(0))
 AddRule(T_OBJECT_DOES, ["is", "dealt", T_DAMAGE, "by", T_OBJECTS], None, Object(0))
 AddRule(T_OBJECT_DOES, ["is", "dealt", T_DAMAGE, "by", T_OBJECTS, "or", "by", T_OBJECTS], None, Object(0))
-AddRule(T_OBJECT_DOES, ["is", "put", "into", T_PART_OF_FIELD, T_ENTER_THE_BATTLEFIELD_MOD_OPT, "from", T_PART_OF_FIELD], None, Object(0)) # TODO
-AddRule(T_OBJECT_DOES, ["becomes", "tapped"], None, Object(0)) # TODO
-AddRule(T_OBJECT_DOES, [T_MOVE_ACTION], None, Object(0)) # TODO
-AddRule(T_OBJECT_DOES, [W_TAP, T_OBJECTS, "for", "mana"], None, Object(0)) # TODO
-AddRule(T_OBJECT_DOES, ["is", "tapped", "for", "mana"], None, Object(0)) # TODO
-AddRule(T_OBJECT_DOES, [W_GAIN, "life"], None, Object(0)) # TODO
-AddRule(T_OBJECT_DOES, [W_HAVE, T_COUNTERS_ON], None, Object(0)) # TODO
-AddRule(T_OBJECT_DOES, [W_HAVE, T_NUMBER, "life"], None, Object(0)) # TODO
-AddRule(T_OBJECT_DOES, ["play", T_OBJECTS], None, Object(0)) # TODO
+AddRule(T_OBJECT_DOES, ["is", "put", "into", T_PART_OF_FIELD, T_ENTER_THE_BATTLEFIELD_MOD_OPT, "from", T_PART_OF_FIELD], None, Object(0))
+AddRule(T_OBJECT_DOES, ["becomes", "tapped"], None, Object(0))
+AddRule(T_OBJECT_DOES, [T_MOVE_ACTION], None, Object(0))
+AddRule(T_OBJECT_DOES, [W_TAP, T_OBJECTS, "for", "mana"], None, Object(0))
+AddRule(T_OBJECT_DOES, ["is", "tapped", "for", "mana"], None, Object(0))
+AddRule(T_OBJECT_DOES, [W_GAIN, "life"], None, Object(0))
+AddRule(T_OBJECT_DOES, [W_HAVE, T_COUNTERS_ON], None, Object(0))
+AddRule(T_OBJECT_DOES, [W_HAVE, T_NUMBER, "life"], None, Object(0))
+AddRule(T_OBJECT_DOES, ["play", T_OBJECTS], None, Object(0))
 AddRule(T_OBJECT_DOES, [W_CAST, T_OBJECTS], None, Object(0)) # TODO generalize this
 AddRule(T_OBJECT_DOES, [W_CAST, T_OBJECTS, "that", "targets", T_OBJECTS], None, Object(0))
 AddRule(T_OBJECT_DOES, [W_CAST, T_OBJECTS, T_AT], None, Object(0)) # TODO generalize this
@@ -985,31 +986,31 @@ AddRule(T_PT_EQUAL_TO, ["power", T_EQUAL_TO], None, Object(0))
 AddRule(T_PT_EQUAL_TO, ["toughness", T_EQUAL_TO], None, Object(0))
 AddRule(T_PT_EQUAL_TO, ["power", "and", "toughness", "each", T_EQUAL_TO], None, Object(0))
 
-AddRule(T_WHERE_X_INTERNAL, [T_OBJECT_QUALIFIERS_BEFORE, "spell's", "converted", "mana", "cost"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, [T_OBJECT_QUALIFIERS_BEFORE, "card's", "converted", "mana", "cost"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "converted", "mana", "cost", "of", "the", T_OBJECT_QUALIFIER_BEFORE, "card"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "converted", "mana", "cost", "of", "the", T_OBJECT_QUALIFIER_BEFORE, "spell"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["its", "converted", "mana", "cost"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "power", "of", "the", T_OBJECTS], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "power"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "toughness"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "power", "plus", "its", "toughness"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "number", "of", T_OBJECTS], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "number", "of", T_COUNTERS], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "number", "of", T_COUNTERS, "on", T_OBJECTS], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "number", "of", T_COUNTERS, "removed", "this", "way"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "damage", "dealt", "this", "way"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "greatest", "power", "among", T_OBJECTS, T_OBJECTS, W_CONTROL], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "greatest", "number", "of", T_OBJECTS, T_OBJECTS, "discarded", "this", "way"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "life", "lost", "this", "way"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "total", "life", "lost", "by", "your", "opponents", T_UNTIL], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, ["the", "amount", "of", "life", "you've", "gained", T_UNTIL], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "life", "total"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "starting", "life", "total"], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "devotion", "to", T_COLORS], None, Object(0)) # TODO
-AddRule(T_WHERE_X_INTERNAL, [T_NUMBER], None, Object(0)) # TODO
-AddRule(T_WHERE_X, ["where", "x", "is", T_WHERE_X_INTERNAL], None, Object(0)) # TODO
-AddRule(T_EQUAL_TO, [T_GREATER_LESS, T_WHERE_X_INTERNAL], None, Object(0)) # TODO
+AddRule(T_WHERE_X_INTERNAL, [T_OBJECT_QUALIFIERS_BEFORE, "spell's", "converted", "mana", "cost"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, [T_OBJECT_QUALIFIERS_BEFORE, "card's", "converted", "mana", "cost"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "converted", "mana", "cost", "of", "the", T_OBJECT_QUALIFIER_BEFORE, "card"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "converted", "mana", "cost", "of", "the", T_OBJECT_QUALIFIER_BEFORE, "spell"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["its", "converted", "mana", "cost"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "power", "of", "the", T_OBJECTS], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "power"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "toughness"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "power", "plus", "its", "toughness"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "number", "of", T_OBJECTS], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "number", "of", T_COUNTERS], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "number", "of", T_COUNTERS, "on", T_OBJECTS], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "number", "of", T_COUNTERS, "removed", "this", "way"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "damage", "dealt", "this", "way"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "greatest", "power", "among", T_OBJECTS, T_OBJECTS, W_CONTROL], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "greatest", "number", "of", T_OBJECTS, T_OBJECTS, "discarded", "this", "way"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "life", "lost", "this", "way"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "total", "life", "lost", "by", "your", "opponents", T_UNTIL], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, ["the", "amount", "of", "life", "you've", "gained", T_UNTIL], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "life", "total"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "starting", "life", "total"], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, [T_WHOSE, "devotion", "to", T_COLORS], None, Object(0))
+AddRule(T_WHERE_X_INTERNAL, [T_NUMBER], None, Object(0))
+AddRule(T_WHERE_X, ["where", "x", "is", T_WHERE_X_INTERNAL], None, Object(0))
+AddRule(T_EQUAL_TO, [T_GREATER_LESS, T_WHERE_X_INTERNAL], None, Object(0))
 
 AddRule(T_END_OF_STATEMENT, ["DOT"], None, Object(EndOfStatement))
 
@@ -1018,6 +1019,7 @@ AddRule(T_ROUNDED, ["rounded", "down"], IdentSkip1)
 
 AddRule(T_OBJECTS_OR_NUMBER, [T_OBJECTS], Ident)
 AddRule(T_OBJECTS_OR_NUMBER, [T_NUMBER], Ident)
+AddRule(T_OBJECTS_OR_NUMBER, ["the", "top", "half", "of", "his", "or", "her", "library", "COMMA", T_ROUNDED, "COMMA"], None, Object(0)) # traumatize
 
 AddRule(T_MOVE_TO, [W_TO_INTO_ONTO, T_PART_OF_FIELD, T_ENTER_THE_BATTLEFIELD_MOD_OPT], None, Object(0))
 AddRule(T_MOVE_TO, ["on", "top", "of", T_WHOSE, "library"], None, Object(0))
@@ -1086,7 +1088,7 @@ AddRule(T_ACTION_INTERNAL, [T_OBJECTS_OPT, "put", T_NUMBER, T_PLUS_X_PLUS_X, T_C
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS_OPT, "put", "a", "number", "of", T_PLUS_X_PLUS_X, T_COLORS, T_OBJECT, T_MOVE_TO, T_EQUAL_TO], None, Object(0))
 AddRule(T_ACTION_INTERNAL, [T_NUMBER, T_COUNTERS, "are", "placed"], None, Object(0)) # Corpsejack Menace
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "puts", T_NUMBER, T_PLUS_X_PLUS_X, T_COLORS, T_OBJECT, T_MOVE_TO], None, Object(0))
-AddRule(T_ACTION_INTERNAL, [T_OBJECT, "deals", T_NUMBER, T_DAMAGE, "to", T_OBJECTS], tree.BuildAction_DealDamage)
+AddRule(T_ACTION_INTERNAL, [T_OBJECT, "deals", T_NUMBER, T_DAMAGE, "to", T_OBJECTS], None, Object(0))
 AddRule(T_ACTION_INTERNAL, [T_OBJECT, "deals", T_NUMBER, T_DAMAGE, "divided", "as", "you", "choose", "among", T_OBJECTS], None, Object(0))
 AddRule(T_ACTION_INTERNAL, [T_OBJECT, "deals", T_DAMAGE, "to", T_OBJECTS, T_EQUAL_TO], None, Object(0))
 AddRule(T_ACTION_INTERNAL, [T_OBJECT, "deals", T_DAMAGE, T_EQUAL_TO, "to", T_OBJECTS], None, Object(0))
@@ -1127,6 +1129,7 @@ AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "can't", "be", "countered", "by", T_OBJEC
 AddRule(T_ACTION_INTERNAL, ["you", "win", "the", "game"], None, Object(0));
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "loses", "the", "game"], None, Object(0));
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, W_DONT, "untap", "during", T_WHOSE, "untap", "step"], None, Object(0));
+AddRule(T_ACTION_INTERNAL, [T_OBJECTS, W_DONT, "untap", "during", T_WHOSE, "untap", "steps"], None, Object(0));
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, W_DONT, "untap", "during", T_WHOSE, "next", "untap", "step"], None, Object(0));
 AddRule(T_ACTION_INTERNAL, ["look", "at", T_OBJECTS], None, Object(0));
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS_OPT, W_REVEAL, T_WHOSE, "hand"], None, Object(0));
@@ -1140,13 +1143,15 @@ AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "reveals", W_CARD, "from", T_PART_OF_FIEL
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "reveals", W_CARD, "from", T_PART_OF_FIELD, "until", T_OBJECTS, "reveals", T_OBJECTS, "COMMA", "then", "puts", "all", T_OBJECTS, "into", T_PART_OF_FIELD, T_ENTER_THE_BATTLEFIELD_MOD_OPT], None, Object(0))
 AddRule(T_ACTION_INTERNAL, ["x", "can't", "be", T_NUMBER], None, Object(0))
 AddRule(T_ACTION_INTERNAL, [T_WHOSE, T_PT_EQUAL_TO], None, Object(0))
+
+# TODO: move all 'becomes' rules to T_GET_EFFECT
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "becomes", "a", T_PLUS_X_PLUS_X, T_OBJECTS, T_UNTIL_OPT, "and", T_GET_EFFECTS, T_UNTIL], None, Object(0))
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "becomes", "a", T_PLUS_X_PLUS_X, T_OBJECTS, "with", "all", "creature", "types", T_UNTIL_OPT], None, Object(0))
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "becomes", "a", T_PLUS_X_PLUS_X, T_OBJECTS, "that's", "no", "longer", T_OBJECTS, T_UNTIL_OPT], None, Object(0))
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "becomes", "a", "copy", "of", T_OBJECTS, "and", T_GET_EFFECTS], None, Object(0));
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "become", "a", "copy", "of", T_OBJECTS, "and", T_GET_EFFECTS], None, Object(0));
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "become", T_PLUS_X_PLUS_X, T_UNTIL_OPT], None, Object(0));
-AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "becomes", "a", T_PLUS_X_PLUS_X, T_OBJECTS, T_UNTIL_OPT], None, Object(0))
+#AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "becomes", "a", T_PLUS_X_PLUS_X, T_OBJECTS, T_UNTIL_OPT], None, Object(0))
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "becomes", T_NUMBER, T_OBJECTS, "with", T_PT_EQUAL_TO, T_UNTIL_OPT], None, Object(0))
 AddRule(T_ACTION_INTERNAL, ["it", "is", "still", T_OBJECTS], None, Object(0))
 AddRule(T_ACTION_INTERNAL, ["he", "is", "still", T_OBJECTS], None, Object(0))
@@ -1159,6 +1164,7 @@ AddRule(T_ACTION_INTERNAL, ["as", "an", "additional", "cost", "to", W_CAST, T_OB
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "fights", T_OBJECTS], None, Object(0));
 AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "fight", "each", "other"], None, Object(0));
 AddRule(T_ACTION_INTERNAL, ["have", T_OBJECTS, "become", "a", "copy", "of", T_OBJECTS], None, Object(0));
+AddRule(T_ACTION_INTERNAL, ["have", T_OBJECTS, "enter", "the", "battlefield", "as", "a", "copy", "of", T_OBJECTS], None, Object(0));
 AddRule(T_ACTION_INTERNAL, [T_WHOSE, "name", "is", "still", T_NAME], None, Object(0));
 AddRule(T_ACTION_INTERNAL, [T_WHOSE, "activated", "abilities", "can't", "be", "activated"], None, Object(0))
 AddRule(T_ACTION_INTERNAL, ["activated", "abilities", "of", T_OBJECTS, "can't", "be", "activated"], None, Object(0))
@@ -1187,21 +1193,23 @@ AddRule(T_ACTION_INTERNAL, [T_OBJECTS, "may", "pay", T_COST], None, Object(0));
 AddRule(T_ACTION_INTERNAL, ["a", "deck", "can", "have", T_OBJECTS], None, Object(0));
 AddRule(T_ACTION_INTERNAL, ["x", W_IS, T_WHERE_X_INTERNAL], None, Object(0));
 
-AddRule(T_ACTION_QUALIFIER_AFTER, ["COMMA", T_WHERE_X], None, Object(0)) # TODO
-AddRule(T_ACTION_QUALIFIER_AFTER, ["unless", "you", "pay", T_COST], None, Object(0)) # TODO
-AddRule(T_ACTION_QUALIFIER_AFTER, ["unless", T_OBJECTS, W_CONTROL, T_OBJECTS], None, Object(0)) # TODO
-AddRule(T_ACTION_QUALIFIER_AFTER, ["unless", T_OBJECTS, "pays", T_COST], None, Object(0)) # TODO
-AddRule(T_ACTION_QUALIFIER_AFTER, ["unless", T_OBJECTS, "pays", T_COST, T_FOR_EACH], None, Object(0)) # TODO
-AddRule(T_ACTION_QUALIFIER_AFTER, ["unless", T_OBJECTS, "lost", "life", T_UNTIL], None, Object(0)) # TODO
-AddRule(T_ACTION_QUALIFIER_AFTER, [T_AT], None, Object(0)) # TODO
-AddRule(T_ACTION_QUALIFIER_AFTER, ["instead"], None, Object(0)) # TODO
-AddRule(T_ACTION_QUALIFIER_AFTER, ["instead", T_CONDITION], None, Object(0)) # TODO
-AddRule(T_ACTION_QUALIFIER_AFTER, ["instead", "of", "putting", T_OBJECTS, T_MOVE_TO], None, Object(0)) # TODO
+AddRule(T_ACTION_QUALIFIER_AFTER, ["COMMA", T_WHERE_X], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_AFTER, ["unless", "you", "pay", T_COST], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_AFTER, ["unless", T_OBJECTS, W_CONTROL, T_OBJECTS], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_AFTER, ["if", T_OBJECTS, W_CONTROL, T_OBJECTS], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_AFTER, ["unless", T_OBJECTS, "pays", T_COST], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_AFTER, ["unless", T_OBJECTS, "pays", T_COST, T_FOR_EACH], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_AFTER, ["unless", T_OBJECTS, "lost", "life", T_UNTIL], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_AFTER, [T_AT], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_AFTER, ["instead"], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_AFTER, ["instead", T_CONDITION], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_AFTER, ["instead", "of", "putting", T_OBJECTS, T_MOVE_TO], None, Object(0))
 AddRule(T_ACTION_QUALIFIER_AFTER, ["as", "though", T_OBJECTS, "had", T_ABILITIES], None, Object(0))
 AddRule(T_ACTION_QUALIFIER_AFTER, ["as", "though", T_OBJECTS, "didn't", "have", T_ABILITIES], None, Object(0))
 AddRule(T_ACTION_QUALIFIER_AFTER, ["as", "long", "as", T_OBJECTS, "control", T_OBJECTS], None, Object(0))
 AddRule(T_ACTION_QUALIFIER_AFTER, ["as", "long", "as", T_OBJECTS, W_HAVE, T_COUNTERS_ON], None, Object(0))
 AddRule(T_ACTION_QUALIFIER_AFTER, ["unless", "they're", "mana", "abilities"], None, Object(0)) # Putching Needle
+AddRule(T_ACTION_QUALIFIER_AFTER, ["for", "as", "long", "as", "you", "control", T_OBJECTS], None, Object(0)) # Tidebinder Mage
 AddRule(T_ACTION_QUALIFIER_BEFORE, [T_FOR_EACH, "COMMA"], None, Object(0)) # TODO
 AddRule(T_ACTION_QUALIFIER_BEFORE, [T_OBJECTS, "may"], None, Object(0)) # TODO
 AddRule(T_ACTION_QUALIFIER_BEFORE, [T_OBJECTS, "may", "have"], None, Object(0)) # TODO
@@ -1210,6 +1218,8 @@ AddRule(T_ACTION_QUALIFIER_BEFORE, [T_UNTIL, "COMMA"], None, Object(0)) # TODO
 AddRule(T_ACTION_QUALIFIER_BEFORE, ["after", T_PHASE_OR_STEP, "COMMA"], None, Object(0)) # TODO
 AddRule(T_ACTION_QUALIFIER_BEFORE, ["as", "long", "as", "it", "is", "not", T_WHOSE, "turn", "COMMA"], None, Object(0)) # TODO
 AddRule(T_ACTION_QUALIFIER_BEFORE, ["as", "long", "as", T_OBJECTS, W_IS, "monstrous", "COMMA"], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_BEFORE, ["if", T_OBJECTS, W_IS, "monstrous", "COMMA"], None, Object(0))
+AddRule(T_ACTION_QUALIFIER_BEFORE, ["if", T_OBJECTS, W_IS, "in", T_PART_OF_FIELD, "COMMA"], None, Object(0))
 AddRule(T_ACTION_QUALIFIER_BEFORE, ["as", "long", "as", T_OBJECTS, "control", T_OBJECTS, "COMMA"], None, Object(0))
 AddRule(T_ACTION_QUALIFIER_BEFORE, ["as", "long", "as", T_OBJECTS, T_OBJECT_DOES, "COMMA"], None, Object(0))
 AddRule(T_ACTION_QUALIFIER_BEFORE, ["as", "long", "as", T_OBJECTS, T_OBJECT_DOES, T_AND_OR, T_OBJECTS, T_OBJECT_DOES, "COMMA"], None, Object(0))
@@ -1262,6 +1272,7 @@ AddRule(T_CONDITION, ["whenever", T_OBJECTS, T_OBJECT_DOES, T_UNTIL], None, Obje
 AddRule(T_CONDITION, ["whenever", T_COUNTERS, W_IS, "placed", "on", "THIS"], None, Object(0)) # TODO
 AddRule(T_CONDITION, ['whenever', "an", "ability", "of", T_OBJECTS, "is", "activated"], None, Object(0))
 AddRule(T_CONDITION, ["when", T_OBJECTS, T_OBJECT_DOES], None, Object(0)) # TODO
+AddRule(T_CONDITION, ["when", T_OBJECTS, T_OBJECT_DOES, T_AND_OR, T_OBJECT_DOES], None, Object(0)) # TODO
 AddRule(T_CONDITION, ["as", T_OBJECTS, T_OBJECT_DOES], None, Object(0)) # TODO
 AddRule(T_CONDITION, ["if", T_OBJECTS, T_OBJECT_DOES], None, Object(0)) # TODO
 AddRule(T_CONDITION, ['if', T_OBJECTS, "control", T_OBJECTS], None, Object(0)) # TODO generalize this
@@ -1281,6 +1292,7 @@ AddRule(T_CONDITION, ['if', T_OBJECTS, "causes", "you", "to", T_ACTIONS], None, 
 AddRule(T_CONDITION, ['if', T_OBJECTS, W_IS, "countered", "this", "way"], None, Object(0)) # TODO
 AddRule(T_CONDITION, ['if', T_OBJECTS, W_IS, T_OBJECTS], None, Object(0)) # TODO
 AddRule(T_CONDITION, ['if', T_OBJECTS, "was", T_OBJECTS], None, Object(0)) # TODO
+AddRule(T_CONDITION, ['if', T_OBJECTS, "is", "attached", "to", T_OBJECTS], None, Object(0)) # TODO
 AddRule(T_CONDITION, ['if', T_OBJECTS, W_HAVE, T_ABILITIES], None, Object(0)) # TODO
 AddRule(T_CONDITION, ['if', T_NUMBER, T_COUNTERS, "would", "be", "placed", "on", T_OBJECTS], None, Object(0)) # TODO
 AddRule(T_CONDITION, ['if', "it", "isn't", "a", "mana", "ability"], None, Object(0)) # TODO
@@ -1289,18 +1301,17 @@ AddRule(T_CONDITION, ["if", T_WHOSE, "power", "is", T_NUMBER], None, Object(0)) 
 AddRule(T_CONDITION, ["if", T_WHOSE, "toughness", "is", T_NUMBER], None, Object(0)) # TODO
 AddRule(T_CONDITION, [T_AT], Ident) # TODO generalize this
 
-AddRule(T_STATEMENT, [T_ACTIONS], tree.BuildStatement_Action)
-AddRule(T_STATEMENT, [T_COST, "COLON", T_ACTIONS], tree.BuildStatement_PaidAction)
-AddRule(T_STATEMENT, [T_ABILITIES], tree.BuildStatement_CreatureAbility)
+AddRule(T_STATEMENT, [T_ACTIONS], None, Object(0))
+AddRule(T_STATEMENT, [T_COST, "COLON", T_ACTIONS], None, Object(0))
+AddRule(T_STATEMENT, [T_ABILITIES], None, Object(0))
 AddRule(T_STATEMENT, [T_COST, "COLON", T_ABILITIES], None, Object(0))
-AddRule(T_STATEMENT, ["indestructible"], None, Object(0))
-AddRule(T_STATEMENT, ["enchant", T_OBJECT], tree.BuildStatement_EnchantWhat)
+AddRule(T_STATEMENT, ["enchant", T_OBJECT], None, Object(0))
 AddRule(T_STATEMENT, ["equip", T_COST], None, Object(0)) # TODO
 
-AddRule(T_STATEMENT, [T_BATTALION, T_ACTIONS], tree.BuildStatement_Battalion)
+AddRule(T_STATEMENT, [T_BATTALION, T_ACTIONS], None, Object(0))
 AddRule(T_STATEMENT, [T_BLOODRUSH, T_STATEMENT], IdentSkip1)
 AddRule(T_STATEMENT, [T_HEROIC, T_STATEMENT], IdentSkip1)
-AddRule(T_STATEMENT, ["overload", T_COST], IdentSkip1)
+AddRule(T_STATEMENT, ["overload", T_COST], None, Object(0))
 AddRule(T_STATEMENT, ["fuse"], None, Object(0))
 AddRule(T_STATEMENT, ["//"], None, Object(0))
 

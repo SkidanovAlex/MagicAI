@@ -173,7 +173,9 @@ def Tokenize(text, name):
     if '//' in name:
         print name
         pos = name.find('//')
-        text = text.lower().replace(name[:pos].lower().strip(), "THIS")
+        text = text.lower()
+        if name[:pos].lower().strip() != 'turn': # HACK: turn//burn has "until end of turn" in its description
+            text = text.replace(name[:pos].lower().strip(), "THIS")
         text = text.replace(name[pos + 2:].lower().strip(), "THIS")
     else:
         text = text.lower().replace(name.lower(), "THIS")
@@ -228,17 +230,10 @@ def PrettyPrintTree(tree, ident = ""):
                 PrettyPrintTree(elem, ident + " ")
             print "%s}" % ident
 
-def ParseTreeToStatement(tree):
-    if tree['terminal']:
-        return tree['state']
-    children = []
-    for elem in tree['children']:
-        children.append(ParseTreeToStatement(elem))
-    return tree['rule'].apply(children)
-
 if __name__ == "__main__":
     debug = True
     ComputeLimits()
-    tree = ParseCard("Equipped creature can't be blocked except by Walls.", "Artisan of Forms")
+    tree = ParseCard("Search your library for a Gate card, put it onto the battlefield, then shuffle your library. If you control ten or more Gates with different names, you win the game.", "Maze")
 
     PrettyPrintTree(tree)
+

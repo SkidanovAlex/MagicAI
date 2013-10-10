@@ -9,7 +9,8 @@
 import urllib2
 import re
 
-from parser import ParseCard, ParseTreeToStatement, ComputeLimits
+from parser import ParseCard, ComputeLimits
+from codegen import TraverseTree
 
 PARSE_NEW = 1
 PARSE_ALL = 2
@@ -80,6 +81,9 @@ def randomFixes(text):
     text = text.replace("Renegerate", "Regenerate");
     text = text.replace(": Sacrifice Encroaching", ", Sacrifice Encroaching");
     text = text.replace("Echanted", "Enchanted");
+    text = text.replace("creature you control to its owners hand.", "creature you control to its owner's hand.");
+    # blast of genius is completely wrong
+    text = text.replace("Choose target creature or player. Draw three cards and discard a card. Blast of Genius deals damage equal to the converted mana cost of the discard card to that creature or player.", "Choose target creature or player. Draw three cards, then discard a card. Blast of Genius deals damage equal to the discarded card's converted mana cost to that creature or player.");
     return text
 
 def removeImages(text):
@@ -149,14 +153,17 @@ def doit(fname, setName, mode):
         print "\n"
         """
         ok = False
+        parsed = None
         if mode == PARSE_ALL or (mode == PARSE_NEW and name not in known):
             tree = ParseCard(cardText, name)
             if tree != None:
                 ok = True
-                ParseTreeToStatement(tree)
+                parsed = TraverseTree(tree)
+                parsedStr = "FAIL" if parsed == None else "PARSED"
                 new.append(name)
         elif name in known:
             ok = True
+            parsedStr = "SKIPPED"
 
         colorSet = set()
         colors = []
@@ -178,7 +185,7 @@ def doit(fname, setName, mode):
         colors = ''.join(colors)
 
         if ok or name in known:
-            print "[%s] %s: OK%s" % (colors, name, " (new)" if name not in known else " (gone)" if not ok else "")
+            print "[%s] %s: OK%s %s" % (colors, name, " (new)" if name not in known else " (gone)" if not ok else "", parsedStr)
             assert ok
             if colors not in report:
                 report[colors] = 1
@@ -197,13 +204,13 @@ def doit(fname, setName, mode):
         print >> fout, "\n".join(known)
 
 if __name__ == '__main__':
-    mode = PARSE_ALL
+    mode = PARSE_NEW
     ComputeLimits()
 #    doit('m13', 'm13', mode)
-    doit('m14', 'm14', mode)
+#    doit('m14', 'm14', mode)
 #    doit('gatecrash', 'gatecrash', mode)
 #    doit('rtr', 'return to ravnica', mode)
-#    doit('dgm', 'dragon\'s maze', mode)
-    doit('theros', 'theros', mode)
+    doit('dgm', 'dragon\'s maze', mode)
+#    doit('theros', 'theros', mode)
 
     

@@ -30,21 +30,6 @@ class CommaSeparatedList:
     def add_element(self, value):
         self.list.append(value)
 
-class Action:
-    pass
-
-class TargetGetEffectAction(Action):
-    def __init__(self, target, effect, time):
-        self.target = target
-        self.effect = effect
-        self.time = time
-
-class MoveAction(Action):
-    def __init__(self, target, action, part_of_field = None):
-        self.target = target
-        self.action = action
-        self.part_of_field = part_of_field
-
 class Statement:
     pass
 
@@ -56,64 +41,3 @@ class MultiStatement:
 
 class EmptyStatement(Statement):
     pass
-
-class ActionStatement(Statement):
-    def __init__(self, act):
-        self.action = act
-
-class PaidActionStatement(Statement):
-    def __init__(self, cost, act):
-        self.cost = cost
-        self.action = act
-
-class BattalionStatement(Statement):
-    def __init__(self, act):
-        self.action = act
-
-class EnterTheBattleFieldModStatement(Statement):
-    def __init__(self, target, mod):
-        self.target = target
-        self.mod = mod
-
-class CreatureAbilityStatement(Statement):
-    def __init__(self, ability):
-        self.ability = ability
-
-class EnchantWhatStatement(Statement):
-    def __init__(self, obj):
-        self.object = object
-
-def BuildAction_TargetGetEffect(obj, effect, time):
-    return TargetGetEffectAction(obj, effect, time)
-
-def BuildAction_Move(action, obj):
-    return MoveAction(obj, action)
-
-def BuildAction_MoveFrom(action, obj, _ , part_of_field):
-    return MoveAction(obj, action, part_of_field)
-
-def BuildStatement_Action(act):
-    return ActionStatement(act)
-
-def BuildStatement_PaidAction(cost, _, act):
-    return PaidActionStatement(cost, act)
-
-def BuildStatement_Battalion(_, act):
-    return BattalionStatement(act)
-
-def BuildStatement_EnterTheBattleFieldMod(obj, mod):
-    return EnterTheBattleFieldModStatement(obj, mod)
-
-def BuildStatement_CreatureAbility(ability):
-    return CreatureAbilityStatement(ability)
-
-def BuildStatement_EnchantWhat(_, obj):
-    return EnchantWhatStatement(obj)
-
-def BuildStatement_Empty(_):
-    return EmptyStatement()
-
-
-#TODO
-def BuildAction_DealDamage(dealer, _1, num, _2, _3, target):
-    return None

@@ -170,6 +170,12 @@ def RestoreDP(dp, l, r, result):
 
 def Tokenize(text, name):
     text = text.replace("—", '-')
+    text = text.replace("\x92", '\'')
+    text = text.replace("\x93", '"')
+    text = text.replace("\x94", '"')
+    text = text.replace("\xe2\x80\x99", '\'')
+    text = text.replace("\xe2\x80\x9c", '"')
+    text = text.replace("\xe2\x80\x9d", '"')
     if '//' in name:
         print name
         pos = name.find('//')
@@ -233,7 +239,7 @@ def PrettyPrintTree(tree, ident = ""):
 if __name__ == "__main__":
     debug = True
     ComputeLimits()
-    tree = ParseCard("Search your library for a Gate card, put it onto the battlefield, then shuffle your library. If you control ten or more Gates with different names, you win the game.", "Maze")
+    tree = ParseCard("When Trostani's Summoner enters the battlefield, put a 2/2 white Knight creature token with vigilance, a 3/3 green Centaur creature token, and a 4/4 green Rhino creature token with trample onto the battlefield.", "Trostani's Summoner")
 
     PrettyPrintTree(tree)
 

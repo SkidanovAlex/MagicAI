@@ -82,8 +82,13 @@ def randomFixes(text):
     text = text.replace(": Sacrifice Encroaching", ", Sacrifice Encroaching");
     text = text.replace("Echanted", "Enchanted");
     text = text.replace("creature you control to its owners hand.", "creature you control to its owner's hand.");
+    text = text.replace("non-land", "nonland");
+    text = text.replace("Valroz", "Varolz");
+    text = text.replace("Activate this ability only any time you could play a sorcery.", "Activate this ability only any time you could cast a sorcery.");
     # blast of genius is completely wrong
     text = text.replace("Choose target creature or player. Draw three cards and discard a card. Blast of Genius deals damage equal to the converted mana cost of the discard card to that creature or player.", "Choose target creature or player. Draw three cards, then discard a card. Blast of Genius deals damage equal to the discarded card's converted mana cost to that creature or player.");
+    # reap intellect is also mostly screwed
+    text = text.replace("Target opponent reveals his or her hand. You choose X nonland cards from among them. Search that player's library, hand and graveyard for cards with the same name as those cards and exile them. Then, that player shuffles his or her library.", "Target opponent reveals his or her hand. You choose up to X nonland cards from it and exile them. For each card exiled this way, search that player's graveyard, hand, and library for any number of cards with the same name as that card and exile them. Then that player shuffles his or her library.")
     return text
 
 def removeImages(text):
@@ -210,7 +215,7 @@ if __name__ == '__main__':
 #    doit('m14', 'm14', mode)
 #    doit('gatecrash', 'gatecrash', mode)
 #    doit('rtr', 'return to ravnica', mode)
-    doit('dgm', 'dragon\'s maze', mode)
-#    doit('theros', 'theros', mode)
+#    doit('dgm', 'dragon\'s maze', mode)
+    doit('theros', 'theros', mode)
 
     

@@ -55,7 +55,7 @@ def ComputeLimits():
 # it should match all +a/+a, -a/-a, -a/+a, and also just a/a
 def IsPlusXPlusX(word):
     # should be good enough
-    return "/" in word
+    return "/" in word and word != "and/or"
 
 def IsLoyaltyCost(word):
     return "0" == word or word[0] == '+' or word[0] == '-'
@@ -146,7 +146,7 @@ def DP(dp, text, l, r, result, depth=0):
             desc.append(r)
             dp[l][r][result] = { 'rule': rule , 'split': desc }
     if ways > 1:
-        print ' '.join(text)
+        print ' '.join([str(x) for x in enumerate(text)])
         print "WARNING: [%d:%d, %d] -- %d ways to achieve" % (l, r, result, ways)
         assert False
     elif ways == 1:
@@ -231,7 +231,7 @@ def PrettyPrintTree(tree, ident = ""):
         if len(tree['children']) == 1:
             PrettyPrintTree(tree['children'][0], ident)
         else:
-            print "%s{" % ident
+            print "%s %d = {" % (ident, tree['rule'].emits)
             for elem in tree['children']:
                 PrettyPrintTree(elem, ident + " ")
             print "%s}" % ident
@@ -239,7 +239,7 @@ def PrettyPrintTree(tree, ident = ""):
 if __name__ == "__main__":
     debug = True
     ComputeLimits()
-    tree = ParseCard("Each player turns face up all cards he or she owns exiled with Pyxis of Pandemonium, then puts all permanent cards among them onto the battlefield.", "Pyxis of Pandemonium")
+    tree = ParseCard("When Evangel of Heliod enters the battlefield, put a number of 1/1 white Soldier creature tokens onto the battlefield equal to your devotion to white.", "Evangel of Heliod")
 
     PrettyPrintTree(tree)
 

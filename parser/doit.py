@@ -211,11 +211,11 @@ def doit(fname, setName, mode):
 if __name__ == '__main__':
     mode = PARSE_NEW
     ComputeLimits()
-#    doit('m13', 'm13', mode)
+    doit('m13', 'm13', mode)
 #    doit('m14', 'm14', mode)
 #    doit('gatecrash', 'gatecrash', mode)
 #    doit('rtr', 'return to ravnica', mode)
 #    doit('dgm', 'dragon\'s maze', mode)
-    doit('theros', 'theros', mode)
+#    doit('theros', 'theros', mode)
 
     

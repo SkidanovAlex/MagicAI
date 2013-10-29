@@ -239,7 +239,7 @@ def PrettyPrintTree(tree, ident = ""):
 if __name__ == "__main__":
     debug = True
     ComputeLimits()
-    tree = ParseCard("When Trostani's Summoner enters the battlefield, put a 2/2 white Knight creature token with vigilance, a 3/3 green Centaur creature token, and a 4/4 green Rhino creature token with trample onto the battlefield.", "Trostani's Summoner")
+    tree = ParseCard("Each player turns face up all cards he or she owns exiled with Pyxis of Pandemonium, then puts all permanent cards among them onto the battlefield.", "Pyxis of Pandemonium")
 
     PrettyPrintTree(tree)
 

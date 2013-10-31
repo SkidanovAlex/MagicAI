@@ -239,7 +239,7 @@ def PrettyPrintTree(tree, ident = ""):
 if __name__ == "__main__":
     debug = True
     ComputeLimits()
-    tree = ParseCard("When Evangel of Heliod enters the battlefield, put a number of 1/1 white Soldier creature tokens onto the battlefield equal to your devotion to white.", "Evangel of Heliod")
+    tree = ParseCard("Each player turns face up all cards he or she owns exiled with Pyxis of Pandemonium, then puts all permanent cards among them onto the battlefield.", "Pyxis of Pandemonium")
 
     PrettyPrintTree(tree)
 

@@ -84,6 +84,7 @@ def randomFixes(text):
     text = text.replace("creature you control to its owners hand.", "creature you control to its owner's hand.");
     text = text.replace("non-land", "nonland");
     text = text.replace("Valroz", "Varolz");
+    text = text.replace("Each creature card in you graveyard", "Each creature card in your graveyard");
     text = text.replace("Activate this ability only any time you could play a sorcery.", "Activate this ability only any time you could cast a sorcery.");
     # blast of genius is completely wrong
     text = text.replace("Choose target creature or player. Draw three cards and discard a card. Blast of Genius deals damage equal to the converted mana cost of the discard card to that creature or player.", "Choose target creature or player. Draw three cards, then discard a card. Blast of Genius deals damage equal to the discarded card's converted mana cost to that creature or player.");
@@ -109,6 +110,8 @@ def removeImages(text):
     return text
 
 def doit(fname, setName, mode):
+    global totalFailed
+    global totalCards
     website = open('spoilers/' + fname + '.txt', 'r').read()
     known = set()
     try:
@@ -189,6 +192,8 @@ def doit(fname, setName, mode):
                 clr = ''
         colors = ''.join(colors)
 
+        totalCards += 1
+
         if ok or name in known:
             print "[%s] %s: OK%s %s" % (colors, name, " (new)" if name not in known else " (gone)" if not ok else "", parsedStr)
             assert ok
@@ -198,6 +203,7 @@ def doit(fname, setName, mode):
                 report[colors] += 1
         else:
             print "[%s] %s: \033[1;31mFAIL\033[0m" % (colors, name)
+            totalFailed += 1
 
         count += 1
     print "[%s] Total cards: %d. Known: %d. New: %d" % (setName, count, len(known), len(new))
@@ -209,7 +215,9 @@ def doit(fname, setName, mode):
         print >> fout, "\n".join(known)
 
 if __name__ == '__main__':
-    mode = PARSE_ALL
+    mode = PARSE_NEW
+    totalFailed = 0
+    totalCards = 0
     ComputeLimits()
 #    doit('m13', 'm13', mode)
     doit('m14', 'm14', mode)
@@ -217,5 +225,7 @@ if __name__ == '__main__':
     doit('rtr', 'return to ravnica', mode)
     doit('dgm', 'dragon\'s maze', mode)
     doit('theros', 'theros', mode)
+
+    print "TOTAL: %d failed / %d" % (totalFailed, totalCards)
 
     

@@ -7,12 +7,12 @@ Current Status
 --------------
 The current stage of the project is implementing the parser that can parse magic cards. Currently the status is:
 
-RTR: all the cards except Tablet of the Guilds
+RTR: all the cards
 
-Gatecrash: all the cards except Signal the Clans
+Gatecrash: all the cards
 
-DGM: eight cards are missing
+DGM: all the cards except Trait Doctoring
 
-M14: five cards are missing
+M14: all the cards
 
-Theros: all the cards except Pyxis of Pandemonium
+Theros: all the cards
